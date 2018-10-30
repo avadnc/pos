@@ -25,18 +25,18 @@ $plantilla->display('modulos/header.tpl');
 //seccion asode
 $plantilla->display('modulos/menu.tpl');
 //contenido
-if (isset($_GET['ruta'])){
+if (isset($_GET['ruta'])) {
 
-    if( $_GET['ruta'] == 'dashboard'||
+    if ($_GET['ruta'] == 'dashboard' ||
         $_GET['ruta'] == 'usuarios' ||
         $_GET['ruta'] == 'categorias' ||
         $_GET['ruta'] == 'productos' ||
         $_GET['ruta'] == 'clientes' ||
         $_GET['ruta'] == 'crear-ventas' ||
-        $_GET['ruta'] == 'administrar-ventas'||
-        $_GET['ruta'] == 'reporte-ventas'){
+        $_GET['ruta'] == 'administrar-ventas' ||
+        $_GET['ruta'] == 'reporte-ventas') {
 
-        $plantilla->display('modulos/'.$_GET['ruta'].'.tpl');
+        $plantilla->display('modulos/' . $_GET['ruta'] . '.tpl');
 
     } else {
         $plantilla->display('modulos/404.tpl');
