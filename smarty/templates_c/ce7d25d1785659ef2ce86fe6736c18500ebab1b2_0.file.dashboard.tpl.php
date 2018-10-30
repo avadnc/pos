@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-5, created on 2018-10-30 01:02:45
-  from '/var/www/html/pos/smarty/templates/modulos/contenido.html' */
+/* Smarty version 3.1.34-dev-5, created on 2018-10-30 00:26:16
+  from '/var/www/html/pos/smarty/templates/modulos/dashboard.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-5',
-  'unifunc' => 'content_5bd7adb5d0ad93_47421606',
+  'unifunc' => 'content_5bd7eb78b87450_74698920',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'e078b060724d1b8fadb3fcd32ecb3cfde5444a08' => 
+    'ce7d25d1785659ef2ce86fe6736c18500ebab1b2' => 
     array (
-      0 => '/var/www/html/pos/smarty/templates/modulos/contenido.html',
-      1 => 1540861346,
+      0 => '/var/www/html/pos/smarty/templates/modulos/dashboard.tpl',
+      1 => 1540863521,
       2 => 'file',
     ),
   ),
@@ -20,19 +20,18 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bd7adb5d0ad93_47421606 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bd7eb78b87450_74698920 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Blank page
-            <small>it all starts here</small>
+           Dashboard
+            <small>Panel de Control</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Examples</a></li>
-            <li class="active">Blank page</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+            <li><a href="#">Dashboard</a></li>
         </ol>
     </section>
 
