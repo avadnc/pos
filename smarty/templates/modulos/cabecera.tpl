@@ -56,6 +56,5 @@
 <!-- Cuerpo del Documento                                                    -->
 <!-- ======================================================================= -->
 
-<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
-    <!-- Site wrapper -->
-    <div class="wrapper">
+<body class="hold-transition skin-blue sidebar-collapse sidebar-mini login-page">
+  

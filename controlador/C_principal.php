@@ -1,7 +1,8 @@
 <?php
-require($_SERVER['DOCUMENT_ROOT'] . '/pos/smarty/Smarty.class.php');
+// require($_SERVER['DOCUMENT_ROOT'] . '/pos/smarty/Smarty.class.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/pos/smarty/SmartyBC.class.php');
 
-class C_principal extends Smarty
+class C_principal extends SmartyBC
 {
 
     function __construct()
@@ -14,5 +15,13 @@ class C_principal extends Smarty
         $this->setCompileDir($config['base_url'] . '/smarty/templates_c');
     }
 
+    public function salir(){
+        
+
+        session_destroy();
+        echo '<script>
+        window.location = "login";
+        </script>';
+    }
 
 }
