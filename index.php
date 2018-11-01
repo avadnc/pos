@@ -38,7 +38,11 @@ if (isset($_GET['ruta'])) {
 
         $plantilla->display('modulos/' . $_GET['ruta'] . '.tpl');
 
-    } else {
+    } else if( $_GET['ruta'] == 'salir') {
+      $salir = new C_principal;
+      $salir->salir();
+    }
+    else {
         $plantilla->display('modulos/404.tpl');
     }
 } else {
