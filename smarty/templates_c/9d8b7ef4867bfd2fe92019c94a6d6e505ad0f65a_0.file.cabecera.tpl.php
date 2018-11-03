@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-5, created on 2018-10-30 00:39:58
+/* Smarty version 3.1.34-dev-5, created on 2018-11-01 00:56:03
   from '/var/www/html/pos/smarty/templates/modulos/cabecera.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-5',
-  'unifunc' => 'content_5bd7eeaed78646_75791199',
+  'unifunc' => 'content_5bda9573af8326_82507008',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9d8b7ef4867bfd2fe92019c94a6d6e505ad0f65a' => 
     array (
       0 => '/var/www/html/pos/smarty/templates/modulos/cabecera.tpl',
-      1 => 1540877853,
+      1 => 1541051755,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bd7eeaed78646_75791199 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bda9573af8326_82507008 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,6 +31,7 @@ function content_5bd7eeaed78646_75791199 (Smarty_Internal_Template $_smarty_tpl)
     <title><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
 </title>
 
+    <link rel="icon" href="img/cash.png" type="image/x-icon"/>
     <!-- =================================================================== -->
     <!-- Secion para los estilos                                             -->
     <!-- =================================================================== -->
@@ -88,7 +89,6 @@ function content_5bd7eeaed78646_75791199 (Smarty_Internal_Template $_smarty_tpl)
 <!-- Cuerpo del Documento                                                    -->
 <!-- ======================================================================= -->
 
-<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
-    <!-- Site wrapper -->
-    <div class="wrapper"><?php }
+<body class="hold-transition skin-blue sidebar-collapse sidebar-mini login-page">
+  <?php }
 }

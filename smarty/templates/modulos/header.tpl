@@ -1,15 +1,16 @@
 <!-- Site wrapper -->
 <div class="wrapper">
+
 <header class="main-header">
     <!-- =================================================================== -->
     <!-- Logotipo                                                            -->
     <!-- =================================================================== -->
-    <a href="" class="logo">
+    <a class="logo">
 
         <!-- Logo Mini -->
 
         <span class="logo-mini">
-            <img src="img/pos/cash.png" class="img-responsive" style="padding: 10px;">
+            <img src="img/cash.png" class="img-responsive" style="padding: 10px;">
 
         </span>
 
@@ -37,8 +38,8 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <li class="dropdown user user-menu">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="img/pos/usuarios/anonimo.jpg" class="user-image">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="img/usuarios/anonimo.jpg" class="user-image">
                         <span class="hidden-xs">Usuario</span>
                     </a>
                     <!--Dropdown toggle-->

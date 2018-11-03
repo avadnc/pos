@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{$titulo}</title>
 
+    <link rel="icon" href="img/cash.png" type="image/x-icon"/>
     <!-- =================================================================== -->
     <!-- Secion para los estilos                                             -->
     <!-- =================================================================== -->
