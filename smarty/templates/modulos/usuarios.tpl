@@ -69,11 +69,9 @@
 <!-- /.content-wrapper -->
 
 <!-- Modal Agregar Usuario -->
-<!-- Modal -->
+
 <div id="modalAgregarUsuario" class="modal fade" role="dialog">
   <div class="modal-dialog">
-
-    <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header" style="background:#3c8dbc; color:white;">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -89,7 +87,6 @@
                     <input type="text" class="form-control input-lg" name="nuevoNombre" placeholder="Ingresar Nombre">
                 </div>
             </div>
-
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon">
@@ -98,7 +95,6 @@
                     <input type="text" class="form-control input-lg" name="nuevoUsuario" placeholder="Ingresar Usuario">
                 </div>
             </div>
-
            <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon">
@@ -107,7 +103,6 @@
                     <input type="password" class="form-control input-lg" name="nuevoPassword" placeholder="Ingresar Contraseña">
                 </div>
             </div>
-
            <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon">
@@ -121,13 +116,17 @@
                     </select>
                 </div>
             </div>
-
-        </div>
+            <div clasS="form-group">
+                <div class="panel">SUBIR FOTO</div>
+                <input type="file" id="nuevaFoto" name="nuevaFoto">
+                <p class="help-block">Tamaño Maximo de la foto 200Kb</p>
+                <img src="img/usuarios/anonimo.jpg" class="img-thumbnail" width="100px">
+            </div>
+          </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
-
   </div>
 </div>
