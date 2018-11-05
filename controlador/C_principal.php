@@ -18,7 +18,6 @@ class C_principal extends SmartyBC
 
     static public function salir()
     {
-
         session_destroy();
         echo '<script> window.location = "login"; </script>';
         exit;
@@ -52,6 +51,7 @@ class C_principal extends SmartyBC
 
                 } else if ($_GET['ruta'] == 'salir') {
 
+                    //salir del sistema de logueo
                     C_principal::salir();
 
                 } else {
