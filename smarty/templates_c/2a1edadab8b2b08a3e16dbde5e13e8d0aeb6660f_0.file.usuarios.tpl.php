@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-5, created on 2018-11-09 00:32:56
+/* Smarty version 3.1.34-dev-5, created on 2018-11-09 03:39:18
   from '/var/www/html/pos/smarty/templates/modulos/usuarios.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-5',
-  'unifunc' => 'content_5be4d5b8507027_13846750',
+  'unifunc' => 'content_5be50166b34af0_71034998',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2a1edadab8b2b08a3e16dbde5e13e8d0aeb6660f' => 
     array (
       0 => '/var/www/html/pos/smarty/templates/modulos/usuarios.tpl',
-      1 => 1541723571,
+      1 => 1541734755,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5be4d5b8507027_13846750 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5be50166b34af0_71034998 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -60,30 +60,42 @@ function content_5be4d5b8507027_13846750 (Smarty_Internal_Template $_smarty_tpl)
 
                         </tr>
                     </thead>
-                    <?php 
-                    $item = null;
-                    $valor = null;
-                    $usuarios = ControladorUsuarios::ctrMostraUsuarios($item,$valor);
-
-                    $display->assign('usuarios',$usuarios);
-                    ?>
                     <tbody>
                     <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['usuarios']->value, 'usuario');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['usuarios']->value, 'i');
 if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['usuario']->value) {
+foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 ?>
-                        <tr>
-                            <td>1</td>
-                            <td>$usuario.nombre</td>
-                            <td>Admin</td>
-                            <td><img src="img/usuarios/anonimo.jpg" class="img-thumbnail" width="40px" ></td>
-                            <td>Administrador</td>
-                            <td><button class="btn btn-success btn-xs">Activado</button></td>
-                            <td>2018-11-4 18:26:24</td>
+                          <tr>
+                            <td><?php echo $_smarty_tpl->tpl_vars['i']->value['id'];?>
+</td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['i']->value['nombre'];?>
+</td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['i']->value['usuario'];?>
+</td>
+                            <td>
+                                <?php if ($_smarty_tpl->tpl_vars['i']->value['foto'] == '') {?>
+                                <img src="img/usuarios/anonimo.jpg" class="img-thumbnail" width="40px" >
+                                <?php } else { ?>
+                                <img src="<?php echo $_smarty_tpl->tpl_vars['i']->value['foto'];?>
+" class="img-thumbnail" width="40px" >
+                                <?php }?>
+                            </td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['i']->value['perfil'];?>
+</td>
+                            <td>
+                            <?php if ($_smarty_tpl->tpl_vars['i']->value['estado'] == "1") {?>
+                            <button class="btn btn-success btn-xs">Activado</button>
+                            <?php } else { ?>
+                            <button class="btn btn-danger btn-xs">Desactivado</button>
+                            <?php }?>
+                            </td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['i']->value['ultimo_login'];?>
+</td>
                             <td>
                                 <div class="btn-group">
-                                    <button class="btn btn-warning">
+                                    <button class="btn btn-warning btnEditarUsuario" idUsuario="<?php echo $_smarty_tpl->tpl_vars['i']->value['id'];?>
+" data-toggle="modal" data-target="#modalEditarUsuario">
                                         <i class="fa fa-pencil"></i>
                                     </button>
                                     <button class="btn btn-danger">
@@ -92,13 +104,10 @@ foreach ($_from as $_smarty_tpl->tpl_vars['usuario']->value) {
                                 </div>
                             </td>
                         </tr>
-                        <?php ob_start();
+                       <?php
 }
 }
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
-$_prefixVariable1 = ob_get_clean();
-echo $_prefixVariable1;?>
-
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </tbody>
                 </table>
             </div>
@@ -144,7 +153,7 @@ echo $_prefixVariable1;?>
                     <span class="input-group-addon">
                         <i class="fa fa-lock"></i>
                     </span>
-                    <input type="password" class="form-control input-lg" name="nuevoPassword" placeholder="Ingresar Contraseña">
+                    <input type="password" class="form-control input-lg" name="nuevoPassword" placeholder="Ingresar Contraseña" required>
                 </div>
             </div>
            <div class="form-group">
@@ -178,6 +187,83 @@ echo $_prefixVariable1;?>
         $crearUsuario = new ControladorUsuarios();
         $crearUsuario->ctrCrearUsuario();
 
+      ?>
+      
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Editar Usuario -->
+
+<div id="modalEditarUsuario" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    <form role="form" method="post" enctype="multipart/form-data">
+          <div class="modal-header" style="background:#3c8dbc; color:white;">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Editar Usuarios</h4>
+      </div>
+
+            <div class="modal-body">
+        <div class="box-body">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-user"></i>
+                    </span>
+                    <input type="text" class="form-control input-lg" id="nombre" name="editarNombre">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-key"></i>
+                    </span>
+                    <input type="text" class="form-control input-lg" id="usuario" name="editarUsuario" readonly>
+                </div>
+            </div>
+           <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                    <input type="password" class="form-control input-lg" name="editarPassword" placeholder="Escriba la nueva Contraseña">
+                    <input type="hidden" id="passwordActual" name="passwordActual" >
+                </div>
+            </div>
+           <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-users"></i>
+                    </span>
+                    <select class="form-control input-lg" name="editarPerfil">
+                        <option id="perfil"></option>
+                        <option value="Administrador">Administrador</option>
+                        <option value="Especial">Especial</option>
+                        <option value="Vendedor">Vendedor</option>
+                    </select>
+                </div>
+            </div>
+            <div clasS="form-group">
+                <div class="panel">SUBIR FOTO</div>
+                <input type="file" class="nuevaFoto" name="editarFoto">
+                <p class="help-block">Tamaño Maximo de la foto 200Kb</p>
+                <img src="img/usuarios/anonimo.jpg" id="foto" class="img-thumbnail previsualizar" width="100px">
+                <input type="hidden" id="fotoActual" name="fotoActual">
+            </div>
+          </div>
+      </div>
+            <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+      </div>
+      
+      <?php 
+     
+        $crearUsuario = new ControladorUsuarios();
+        $crearUsuario->ctrEditarUsuario();
+      
       ?>
       
       </form>

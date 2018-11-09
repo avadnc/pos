@@ -23,19 +23,6 @@ class C_principal extends SmartyBC
         exit;
     }
 
-    public static function cabecera()
-    {
-         //seccion header
-        $plantilla->display('modulos/header.tpl');
-         //seccion asode
-        $plantilla->display('modulos/menu.tpl');
-    }
-
-    public static function piepagina()
-    {
-        $plantilla->display('modulos/piepagina.tpl');
-
-    }
 
     static public function index()
     {
@@ -43,6 +30,7 @@ class C_principal extends SmartyBC
         // $plantilla = new C_principal;
         $plantilla->assign('titulo', 'titulo de prueba a cambiar');
         //parte del head
+
         $plantilla->display('modulos/cabecera.tpl');
 
         if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == 'ok') {
@@ -52,58 +40,90 @@ class C_principal extends SmartyBC
             $plantilla->assign('perfil', $_SESSION['perfil']);
 
 
-           
-        //contenido
-            if (isset($_GET['ruta'])) {
+            switch ($_GET['ruta']) {
 
-                switch ($_GET['ruta']) {
+                case 'dashboard':
+                    $plantilla->display('modulos/header.tpl');
+                    $plantilla->display('modulos/menu.tpl');
+                    $plantilla->display('modulos/dashboard.tpl');
+                    $plantilla->display('modulos/piepagina.tpl');
+                    break;
 
-                    case 'dashboard':
-                        C_principal::cabecera();
-                        $plantilla->display('modulos/dashboard.tpl');
-                        break;
-                    case 'usuarios':
-                        $plantilla->display('modulos/usuarios.tpl');
-                        break;
+                case 'usuarios':
 
-                    case 'categorias':
-                        $plantilla->display('modulos/categorias.tpl');
-                        break;
+                    $item = null;
+                    $valor = null;
+                    $usuarios = ControladorUsuarios::ctrMostraUsuarios($item, $valor);
 
-                    case 'productos':
-                        $plantilla->display('modulos/productos.tpl');
-                        break;
+                    $plantilla->assign('usuarios',$usuarios);
 
-                    case 'clientes':
-                        $plantilla->display('modulos/clientes.tpl');
-                        break;
 
-                    case 'crear-ventas':
-                        $plantilla->display('modulos/crear-ventas.tpl');
-                        break;
+                    $plantilla->display('modulos/header.tpl');
+                    $plantilla->display('modulos/menu.tpl');
+                    $plantilla->display('modulos/usuarios.tpl');
+                    $plantilla->display('modulos/piepagina.tpl');
+                    break;
 
-                    case 'administrar-ventas':
-                        $plantilla->display('modulos/administrar-ventas.tpl');
-                        break;
+                case 'categorias':
+                    $plantilla->display('modulos/header.tpl');
+                    $plantilla->display('modulos/menu.tpl');
+                    $plantilla->display('modulos/categorias.tpl');
+                    $plantilla->display('modulos/piepagina.tpl');
+                    break;
 
-                    case 'reporte-ventas':
-                        $plantilla->display('modulos/reporte-ventas.tpl');
-                        break;
+                case 'productos':
+                    $plantilla->display('modulos/header.tpl');
+                    $plantilla->display('modulos/menu.tpl');
+                    $plantilla->display('modulos/productos.tpl');
+                    $plantilla->display('modulos/piepagina.tpl');
+                    break;
 
-                    case 'salir':
-                        C_principal::salir();
-                        break;
+                case 'clientes':
+                    $plantilla->display('modulos/header.tpl');
+                    $plantilla->display('modulos/menu.tpl');
+                    $plantilla->display('modulos/dashboard.tpl');
+                    $plantilla->display('modulos/piepagina.tpl');
+                    break;
 
-                    default:
+                case 'crear-ventas':
+                    $plantilla->display('modulos/header.tpl');
+                    $plantilla->display('modulos/menu.tpl');
+                    $plantilla->display('modulos/clientes.tpl');
+                    $plantilla->display('modulos/piepagina.tpl');
+                    break;
 
-                        $plantilla->display('modulos/404.tpl');
-                        break;
-                }
+                case 'administrar-ventas':
+                    $plantilla->display('modulos/header.tpl');
+                    $plantilla->display('modulos/menu.tpl');
+                    $plantilla->display('modulos/administrar-ventas.tpl');
+                    $plantilla->display('modulos/piepagina.tpl');
+                    break;
 
-            } 
+                case 'reporte-ventas':
+                    $plantilla->display('modulos/header.tpl');
+                    $plantilla->display('modulos/menu.tpl');
+                    $plantilla->display('modulos/reporte-ventas.tpl');
+                    $plantilla->display('modulos/piepagina.tpl');
+                    break;
+
+                case 'salir':
+                    C_principal::salir();
+                    break;
+
+                default:
+                    $plantilla->display('modulos/header.tpl');
+                    $plantilla->display('modulos/menu.tpl');
+                    $plantilla->display('modulos/dashboard.tpl');
+                    $plantilla->display('modulos/piepagina.tpl');
+                    break;
+            }
+
+        } 
             //si no esta iniciada la sesión que agarre el login
-        } else {
+        else {
+
             $plantilla->display('modulos/login.tpl');
+            $plantilla->display('modulos/piepagina.tpl');
         }
     }
 }
