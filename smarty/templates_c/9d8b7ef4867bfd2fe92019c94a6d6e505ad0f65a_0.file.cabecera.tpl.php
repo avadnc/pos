@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-5, created on 2018-11-01 00:56:03
+/* Smarty version 3.1.34-dev-5, created on 2018-11-06 04:03:32
   from '/var/www/html/pos/smarty/templates/modulos/cabecera.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-5',
-  'unifunc' => 'content_5bda9573af8326_82507008',
+  'unifunc' => 'content_5be1129493af28_27899988',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9d8b7ef4867bfd2fe92019c94a6d6e505ad0f65a' => 
     array (
       0 => '/var/www/html/pos/smarty/templates/modulos/cabecera.tpl',
-      1 => 1541051755,
+      1 => 1541459176,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bda9573af8326_82507008 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5be1129493af28_27899988 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -54,7 +54,9 @@ function content_5bda9573af8326_82507008 (Smarty_Internal_Template $_smarty_tpl)
     <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-
+    <!-- DataTables -->
+    <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/datatables.net-bs/css/responsive.bootstrap.min.css">
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
@@ -81,8 +83,23 @@ function content_5bda9573af8326_82507008 (Smarty_Internal_Template $_smarty_tpl)
     <?php echo '<script'; ?>
  src="dist/js/adminlte.min.js"><?php echo '</script'; ?>
 >
-
-
+    <!-- DataTables -->
+    <?php echo '<script'; ?>
+ src="bower_components/datatables.net/js/jquery.dataTables.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="bower_components/datatables.net-bs/js/dataTables.responsive.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="bower_components/datatables.net-bs/js/responsive.bootstrap.js"><?php echo '</script'; ?>
+>
+    <!-- SweetAlert -->
+    <?php echo '<script'; ?>
+ src="js/sweetalert.min.js"><?php echo '</script'; ?>
+>
 </head>
 
 <!-- ======================================================================= -->

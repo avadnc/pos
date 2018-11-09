@@ -23,6 +23,20 @@ class C_principal extends SmartyBC
         exit;
     }
 
+    public static function cabecera()
+    {
+         //seccion header
+        $plantilla->display('modulos/header.tpl');
+         //seccion asode
+        $plantilla->display('modulos/menu.tpl');
+    }
+
+    public static function piepagina()
+    {
+        $plantilla->display('modulos/piepagina.tpl');
+
+    }
+
     static public function index()
     {
         $plantilla = new C_principal;
@@ -30,43 +44,66 @@ class C_principal extends SmartyBC
         $plantilla->assign('titulo', 'titulo de prueba a cambiar');
         //parte del head
         $plantilla->display('modulos/cabecera.tpl');
+
         if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == 'ok') {
-        //seccion header
-            $plantilla->display('modulos/header.tpl');
-        //seccion asode
-            $plantilla->display('modulos/menu.tpl');
+
+            $plantilla->assign('nombre', $_SESSION['nombre']);
+            $plantilla->assign('foto', $_SESSION['foto']);
+            $plantilla->assign('perfil', $_SESSION['perfil']);
+
+
+           
         //contenido
             if (isset($_GET['ruta'])) {
 
-                if ($_GET['ruta'] == 'dashboard' ||
-                    $_GET['ruta'] == 'usuarios' ||
-                    $_GET['ruta'] == 'categorias' ||
-                    $_GET['ruta'] == 'productos' ||
-                    $_GET['ruta'] == 'clientes' ||
-                    $_GET['ruta'] == 'crear-ventas' ||
-                    $_GET['ruta'] == 'administrar-ventas' ||
-                    $_GET['ruta'] == 'reporte-ventas') {
+                switch ($_GET['ruta']) {
 
-                    $plantilla->display('modulos/' . $_GET['ruta'] . '.tpl');
+                    case 'dashboard':
+                        C_principal::cabecera();
+                        $plantilla->display('modulos/dashboard.tpl');
+                        break;
+                    case 'usuarios':
+                        $plantilla->display('modulos/usuarios.tpl');
+                        break;
 
-                } else if ($_GET['ruta'] == 'salir') {
+                    case 'categorias':
+                        $plantilla->display('modulos/categorias.tpl');
+                        break;
 
-                    //salir del sistema de logueo
-                    C_principal::salir();
+                    case 'productos':
+                        $plantilla->display('modulos/productos.tpl');
+                        break;
 
-                } else {
-                    $plantilla->display('modulos/404.tpl');
+                    case 'clientes':
+                        $plantilla->display('modulos/clientes.tpl');
+                        break;
+
+                    case 'crear-ventas':
+                        $plantilla->display('modulos/crear-ventas.tpl');
+                        break;
+
+                    case 'administrar-ventas':
+                        $plantilla->display('modulos/administrar-ventas.tpl');
+                        break;
+
+                    case 'reporte-ventas':
+                        $plantilla->display('modulos/reporte-ventas.tpl');
+                        break;
+
+                    case 'salir':
+                        C_principal::salir();
+                        break;
+
+                    default:
+
+                        $plantilla->display('modulos/404.tpl');
+                        break;
                 }
-            } else {
-                $plantilla->display('modulos/dashboard.tpl');
-            }
-    //footer de la pagina
-            $plantilla->display('modulos/footer.tpl');
 
+            } 
+            //si no esta iniciada la sesión que agarre el login
         } else {
             $plantilla->display('modulos/login.tpl');
         }
-//cierre del body
-        $plantilla->display('modulos/piepagina.tpl');
     }
 }

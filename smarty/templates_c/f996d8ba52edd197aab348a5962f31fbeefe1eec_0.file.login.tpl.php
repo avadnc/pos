@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-5, created on 2018-11-01 00:54:07
+/* Smarty version 3.1.34-dev-5, created on 2018-11-07 20:03:02
   from '/var/www/html/pos/smarty/templates/modulos/login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-5',
-  'unifunc' => 'content_5bda94ff9edd74_83911782',
+  'unifunc' => 'content_5be344f6e49308_24040717',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f996d8ba52edd197aab348a5962f31fbeefe1eec' => 
     array (
       0 => '/var/www/html/pos/smarty/templates/modulos/login.tpl',
-      1 => 1541049621,
+      1 => 1541271926,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bda94ff9edd74_83911782 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5be344f6e49308_24040717 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div id="back"></div>
 <div class="login-box">
     <div class="login-logo">

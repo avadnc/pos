@@ -39,16 +39,31 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown user user-menu">
                     <a class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="img/usuarios/anonimo.jpg" class="user-image">
-                        <span class="hidden-xs">Usuario</span>
+                        {if $foto eq ""}
+                        <img src="img/anonimo.jpg" class="user-image">
+                        {else}
+                        <img src="{$foto}" class="user-image">
+                        {/if}
+                        <span class="hidden-xs">{$nombre}</span>
                     </a>
                     <!--Dropdown toggle-->
                     <ul class="dropdown-menu">
-                        <li class="user-body">
+                        <li class="user-body text-center">
+                       
+                        {if $perfil eq "Administrador"}
+                            <h2><span class="label label-success">{$perfil}</span></h2>
+                        {else if $perfil eq "Especial"}
+                           <h2> <span class="label label-primary">{$perfil}</span></h2>
+                        {else}
+                            <h2><span class="label label-default pull-right">{$perfil}</span></h2>
+                        {/if}
+                        </li>
+                             <li class="user-footer">
                             <div class="pull-right">
                                 <a href="salir" class="btn btn-default btn-flat">Salir</a>
                             </div>
-                        </li>
+                            </li>
+                        
                     </ul>
                 </li>
             </ul>

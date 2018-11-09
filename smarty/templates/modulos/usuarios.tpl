@@ -23,10 +23,10 @@
                </button>
             </div>
             <div class="box-body">
-                <table class="table table-bordered table-striped">
+                <table class="table table-bordered table-striped dt-responsive tablas">
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th style="width:10px">#</th>
                             <th>Nombre</th>
                             <th>Usuario</th>
                             <th>Foto</th>
@@ -37,10 +37,17 @@
 
                         </tr>
                     </thead>
+                    {php}
+                    $item = null;
+                    $valor = null;
+                    $usuarios = ControladorUsuarios::ctrMostraUsuarios($item,$valor);
+
+                    $display->assign('usuarios',$usuarios);
+                    {/php}
                     <tbody>
-                        <tr>
+                          <tr>
                             <td>1</td>
-                            <td>Usuario Administrador</td>
+                            <td>$usuario.nombre</td>
                             <td>Admin</td>
                             <td><img src="img/usuarios/anonimo.jpg" class="img-thumbnail" width="40px" ></td>
                             <td>Administrador</td>
@@ -57,6 +64,7 @@
                                 </div>
                             </td>
                         </tr>
+                       
                     </tbody>
                 </table>
             </div>
@@ -73,10 +81,18 @@
 <div id="modalAgregarUsuario" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
+    <form role="form" method="post" enctype="multipart/form-data">
+    {* // =========================================================================
+    // cabecera Modal
+    // ========================================================================= *}
       <div class="modal-header" style="background:#3c8dbc; color:white;">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Agregar Usuarios</h4>
       </div>
+
+      {* // =======================================================================
+      // Cuerpo del Modal
+      // ======================================================================= *}
       <div class="modal-body">
         <div class="box-body">
             <div class="form-group">
@@ -118,15 +134,28 @@
             </div>
             <div clasS="form-group">
                 <div class="panel">SUBIR FOTO</div>
-                <input type="file" id="nuevaFoto" name="nuevaFoto">
+                <input type="file" class="nuevaFoto" name="nuevaFoto">
                 <p class="help-block">Tamaño Maximo de la foto 200Kb</p>
-                <img src="img/usuarios/anonimo.jpg" class="img-thumbnail" width="100px">
+                <img src="img/usuarios/anonimo.jpg" class="img-thumbnail previsualizar" width="100px">
             </div>
           </div>
       </div>
+      {* // =======================================================================
+      // Footer del modal
+      // ======================================================================= *}
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
       </div>
+      
+      {php}
+       
+        $crearUsuario = new ControladorUsuarios();
+        $crearUsuario->ctrCrearUsuario();
+
+      {/php}
+      
+      </form>
     </div>
   </div>
 </div>

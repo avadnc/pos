@@ -1,27 +1,4 @@
-<?php
-/* Smarty version 3.1.34-dev-5, created on 2018-11-09 00:32:56
-  from '/var/www/html/pos/smarty/templates/modulos/usuarios.tpl' */
-
-/* @var Smarty_Internal_Template $_smarty_tpl */
-if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
-  'version' => '3.1.34-dev-5',
-  'unifunc' => 'content_5be4d5b8507027_13846750',
-  'has_nocache_code' => false,
-  'file_dependency' => 
-  array (
-    '2a1edadab8b2b08a3e16dbde5e13e8d0aeb6660f' => 
-    array (
-      0 => '/var/www/html/pos/smarty/templates/modulos/usuarios.tpl',
-      1 => 1541723571,
-      2 => 'file',
-    ),
-  ),
-  'includes' => 
-  array (
-  ),
-),false)) {
-function content_5be4d5b8507027_13846750 (Smarty_Internal_Template $_smarty_tpl) {
-?><!-- Content Wrapper. Contains page content -->
+<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -60,22 +37,10 @@ function content_5be4d5b8507027_13846750 (Smarty_Internal_Template $_smarty_tpl)
 
                         </tr>
                     </thead>
-                    <?php 
-                    $item = null;
-                    $valor = null;
-                    $usuarios = ControladorUsuarios::ctrMostraUsuarios($item,$valor);
-
-                    $display->assign('usuarios',$usuarios);
-                    ?>
                     <tbody>
-                    <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['usuarios']->value, 'usuario');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['usuario']->value) {
-?>
                         <tr>
                             <td>1</td>
-                            <td>$usuario.nombre</td>
+                            <td>Usuario Administrador</td>
                             <td>Admin</td>
                             <td><img src="img/usuarios/anonimo.jpg" class="img-thumbnail" width="40px" ></td>
                             <td>Administrador</td>
@@ -92,13 +57,6 @@ foreach ($_from as $_smarty_tpl->tpl_vars['usuario']->value) {
                                 </div>
                             </td>
                         </tr>
-                        <?php ob_start();
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
-$_prefixVariable1 = ob_get_clean();
-echo $_prefixVariable1;?>
-
                     </tbody>
                 </table>
             </div>
@@ -116,12 +74,18 @@ echo $_prefixVariable1;?>
   <div class="modal-dialog">
     <div class="modal-content">
     <form role="form" method="post" enctype="multipart/form-data">
-          <div class="modal-header" style="background:#3c8dbc; color:white;">
+    {* // =========================================================================
+    // cabecera Modal
+    // ========================================================================= *}
+      <div class="modal-header" style="background:#3c8dbc; color:white;">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Agregar Usuarios</h4>
       </div>
 
-            <div class="modal-body">
+      {* // =======================================================================
+      // Cuerpo del Modal
+      // ======================================================================= *}
+      <div class="modal-body">
         <div class="box-body">
             <div class="form-group">
                 <div class="input-group">
@@ -162,26 +126,24 @@ echo $_prefixVariable1;?>
             </div>
             <div clasS="form-group">
                 <div class="panel">SUBIR FOTO</div>
-                <input type="file" class="nuevaFoto" name="nuevaFoto">
+                <input type="file" id="nuevaFoto" name="nuevaFoto">
                 <p class="help-block">Tamaño Maximo de la foto 200Kb</p>
-                <img src="img/usuarios/anonimo.jpg" class="img-thumbnail previsualizar" width="100px">
+                <img src="img/usuarios/anonimo.jpg" class="img-thumbnail" width="100px">
             </div>
           </div>
       </div>
-            <div class="modal-footer">
+      {* // =======================================================================
+      // Footer del modal
+      // ======================================================================= *}
+      <div class="modal-footer">
         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
       </div>
-      
-      <?php 
-       
-        $crearUsuario = new ControladorUsuarios();
-        $crearUsuario->ctrCrearUsuario();
-
-      ?>
-      
+      {php}
+      $crearUsuario = new ControladorUsuarios();
+      $crearUsuario->ctrCrearUsuario();
+      {/php}
       </form>
     </div>
   </div>
-</div><?php }
-}
+</div>

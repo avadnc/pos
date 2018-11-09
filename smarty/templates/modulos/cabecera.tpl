@@ -30,7 +30,9 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-
+    <!-- DataTables -->
+    <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/datatables.net-bs/css/responsive.bootstrap.min.css">
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
@@ -49,8 +51,13 @@
 
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
-
-
+    <!-- DataTables -->
+    <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="bower_components/datatables.net-bs/js/dataTables.responsive.js"></script>
+    <script src="bower_components/datatables.net-bs/js/responsive.bootstrap.js"></script>
+    <!-- SweetAlert -->
+    <script src="js/sweetalert.min.js"></script>
 </head>
 
 <!-- ======================================================================= -->
