@@ -52,10 +52,12 @@
                             </td>
                             <td>{$i.perfil}</td>
                             <td>
-                            {if $i.estado eq "1"}
-                            <button class="btn btn-success btn-xs">Activado</button>
+                            {if $usuarioId eq $i.id}
+                                <button class="btn btn-success btn-xs btnActivar" disabled>Activado</button>
+                            {elseif $i.estado eq "1"}
+                                <button idUsuario="{$i.id}" usuarioActual="{$usuarioId}" estadoUsuario="0" class="btn btn-success btn-xs btnActivar">Activado</button>
                             {else}
-                            <button class="btn btn-danger btn-xs">Desactivado</button>
+                                <button idUsuario="{$i.id}" usuarioActual="{$usuarioId}" estadoUsuario="1" class="btn btn-danger btn-xs btnActivar">Desactivado</button>
                             {/if}
                             </td>
                             <td>{$i.ultimo_login}</td>
@@ -64,9 +66,15 @@
                                     <button class="btn btn-warning btnEditarUsuario" idUsuario="{$i.id}" data-toggle="modal" data-target="#modalEditarUsuario">
                                         <i class="fa fa-pencil"></i>
                                     </button>
-                                    <button class="btn btn-danger">
+                                    {if $usuarioId eq $i.id }
+                                    <button class="btn btn-danger btnEliminarUsuario" usuarioActual="{$usuarioId}" idUsuario="{$i.id}" fotoUsuario="{$i.foto}" usuario="{$i.usuario}" disabled>
                                         <i class="fa fa-times"></i>
                                     </button>
+                                    {else}
+                                     <button class="btn btn-danger btnEliminarUsuario" usuarioActual="{$usuarioId}" idUsuario="{$i.id}" fotoUsuario="{$i.foto}" usuario="{$i.usuario}">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                    {/if}
                                 </div>
                             </td>
                         </tr>
@@ -114,7 +122,7 @@
                     <span class="input-group-addon">
                         <i class="fa fa-key"></i>
                     </span>
-                    <input type="text" class="form-control input-lg" name="nuevoUsuario" placeholder="Ingresar Usuario">
+                    <input type="text" class="form-control input-lg" name="nuevoUsuario" id="nuevoUsuario" placeholder="Ingresar Usuario">
                 </div>
             </div>
            <div class="form-group">
@@ -251,3 +259,7 @@
     </div>
   </div>
 </div>
+{php}
+    $borrarUsuario = new ControladorUsuarios();
+    $borrarUsuario->ctrEliminarUsuario();
+{/php}

@@ -33,14 +33,33 @@ class ControladorUsuarios
                         $_SESSION['foto'] = $respuesta['foto'];
                         $_SESSION['perfil'] = $respuesta['perfil'];
 
+                // =============================================================================
+                // registrar fecha y hora para saber el ultimo login
+                // =============================================================================
 
-                        echo '<script> window.location = "dashboard"; </script>';
+                        date_default_timezone_set('America/Mexico_City');
+                        $fecha = date('Y-m-d');
+                        $hora = date('H:i:s');
+                        $fechaActual = $fecha . ' ' . $hora;
+
+                        $item1 = 'ultimo_login';
+                        $valor1 = $fechaActual;
+                        $item2 = 'id';
+                        $valor2 = $respuesta['id'];
+
+                        $ultimoLogin = ModeloUsuarios::MdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
+
+                        if ($ultimoLogin == 'ok') {
+
+                            echo '<script> window.location = "dashboard"; </script>';
+                        }
+
                     } else {
                         echo '<br><div class="alert alert-danger">Error de usuario o contraseña</div>';
                     }
                 // var_dump($respuesta);
                 } else {
-                    echo '<br><div class="alert alert-danger">Usuario</div>';
+                    echo '<br><div class="alert alert-danger text-center">Usuario desactivado</div>';
                 }
             }
 
@@ -311,6 +330,45 @@ class ControladorUsuarios
                             });
                         </script>
                         ';
+            }
+        }
+    }
+
+    // =========================================================================
+    // Borrar Usuario
+    // =========================================================================
+    public static function ctrEliminarUsuario()
+    {
+        if (isset($_GET['idUsuario'])) {
+
+            $tabla = 'usuarios';
+            $datos = $_GET['idUsuario'];
+
+            if ($_GET['fotoUsuario'] != "") {
+                unlink($_GET['fotoUsuario']);
+                rmdir('img/usuarios/' . $_GET['usuario']);
+            }
+
+            $respuesta = ModeloUsuarios::MdlBorrarUsuario($tabla, $datos);
+            if ($respuesta == 'ok') {
+
+                echo '
+                    <script>
+                    swal({
+                        type: "success",
+                        title: "El Usuario ha sido eliminado.",
+                        showConfirmButton: true,
+                        confirmButtonText: "Cerrar",
+                        closeOnConfirm: false
+                    }).then((result)=>{
+                        
+                        if(result.value){
+                            window.location = "usuarios";
+                        }
+
+                    });
+                    </script>
+                    ';
             }
         }
     }

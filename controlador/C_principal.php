@@ -38,6 +38,7 @@ class C_principal extends SmartyBC
             $plantilla->assign('nombre', $_SESSION['nombre']);
             $plantilla->assign('foto', $_SESSION['foto']);
             $plantilla->assign('perfil', $_SESSION['perfil']);
+            $plantilla->assign('usuarioId', $_SESSION['id']);
 
 
             switch ($_GET['ruta']) {
@@ -55,8 +56,7 @@ class C_principal extends SmartyBC
                     $valor = null;
                     $usuarios = ControladorUsuarios::ctrMostraUsuarios($item, $valor);
 
-                    $plantilla->assign('usuarios',$usuarios);
-
+                    $plantilla->assign('usuarios', $usuarios);
 
                     $plantilla->display('modulos/header.tpl');
                     $plantilla->display('modulos/menu.tpl');
@@ -65,6 +65,13 @@ class C_principal extends SmartyBC
                     break;
 
                 case 'categorias':
+                   
+                $item = null;
+                    $valor = null;
+                    $categorias = ControladorCategorias::ctrMostraCategorias($item, $valor);
+
+                    $plantilla->assign('categorias', $categorias);
+
                     $plantilla->display('modulos/header.tpl');
                     $plantilla->display('modulos/menu.tpl');
                     $plantilla->display('modulos/categorias.tpl');

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-5, created on 2018-11-09 03:39:18
+/* Smarty version 3.1.34-dev-5, created on 2018-11-16 17:57:32
   from '/var/www/html/pos/smarty/templates/modulos/usuarios.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-5',
-  'unifunc' => 'content_5be50166b34af0_71034998',
+  'unifunc' => 'content_5bef050c5afb86_87607266',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2a1edadab8b2b08a3e16dbde5e13e8d0aeb6660f' => 
     array (
       0 => '/var/www/html/pos/smarty/templates/modulos/usuarios.tpl',
-      1 => 1541734755,
+      1 => 1542391049,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5be50166b34af0_71034998 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bef050c5afb86_87607266 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -84,10 +84,16 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
                             <td><?php echo $_smarty_tpl->tpl_vars['i']->value['perfil'];?>
 </td>
                             <td>
-                            <?php if ($_smarty_tpl->tpl_vars['i']->value['estado'] == "1") {?>
-                            <button class="btn btn-success btn-xs">Activado</button>
+                            <?php if ($_smarty_tpl->tpl_vars['usuarioId']->value == $_smarty_tpl->tpl_vars['i']->value['id']) {?>
+                                <button class="btn btn-success btn-xs btnActivar" disabled>Activado</button>
+                            <?php } elseif ($_smarty_tpl->tpl_vars['i']->value['estado'] == "1") {?>
+                                <button idUsuario="<?php echo $_smarty_tpl->tpl_vars['i']->value['id'];?>
+" usuarioActual="<?php echo $_smarty_tpl->tpl_vars['usuarioId']->value;?>
+" estadoUsuario="0" class="btn btn-success btn-xs btnActivar">Activado</button>
                             <?php } else { ?>
-                            <button class="btn btn-danger btn-xs">Desactivado</button>
+                                <button idUsuario="<?php echo $_smarty_tpl->tpl_vars['i']->value['id'];?>
+" usuarioActual="<?php echo $_smarty_tpl->tpl_vars['usuarioId']->value;?>
+" estadoUsuario="1" class="btn btn-danger btn-xs btnActivar">Desactivado</button>
                             <?php }?>
                             </td>
                             <td><?php echo $_smarty_tpl->tpl_vars['i']->value['ultimo_login'];?>
@@ -98,9 +104,23 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 " data-toggle="modal" data-target="#modalEditarUsuario">
                                         <i class="fa fa-pencil"></i>
                                     </button>
-                                    <button class="btn btn-danger">
+                                    <?php if ($_smarty_tpl->tpl_vars['usuarioId']->value == $_smarty_tpl->tpl_vars['i']->value['id']) {?>
+                                    <button class="btn btn-danger btnEliminarUsuario" usuarioActual="<?php echo $_smarty_tpl->tpl_vars['usuarioId']->value;?>
+" idUsuario="<?php echo $_smarty_tpl->tpl_vars['i']->value['id'];?>
+" fotoUsuario="<?php echo $_smarty_tpl->tpl_vars['i']->value['foto'];?>
+" usuario="<?php echo $_smarty_tpl->tpl_vars['i']->value['usuario'];?>
+" disabled>
                                         <i class="fa fa-times"></i>
                                     </button>
+                                    <?php } else { ?>
+                                     <button class="btn btn-danger btnEliminarUsuario" usuarioActual="<?php echo $_smarty_tpl->tpl_vars['usuarioId']->value;?>
+" idUsuario="<?php echo $_smarty_tpl->tpl_vars['i']->value['id'];?>
+" fotoUsuario="<?php echo $_smarty_tpl->tpl_vars['i']->value['foto'];?>
+" usuario="<?php echo $_smarty_tpl->tpl_vars['i']->value['usuario'];?>
+">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                    <?php }?>
                                 </div>
                             </td>
                         </tr>
@@ -145,7 +165,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     <span class="input-group-addon">
                         <i class="fa fa-key"></i>
                     </span>
-                    <input type="text" class="form-control input-lg" name="nuevoUsuario" placeholder="Ingresar Usuario">
+                    <input type="text" class="form-control input-lg" name="nuevoUsuario" id="nuevoUsuario" placeholder="Ingresar Usuario">
                 </div>
             </div>
            <div class="form-group">
@@ -269,5 +289,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
       </form>
     </div>
   </div>
-</div><?php }
+</div>
+<?php 
+    $borrarUsuario = new ControladorUsuarios();
+    $borrarUsuario->ctrEliminarUsuario();
+}
 }
