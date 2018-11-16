@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-5, created on 2018-11-08 18:01:50
+/* Smarty version 3.1.34-dev-5, created on 2018-11-16 22:37:03
   from '/var/www/html/pos/smarty/templates/modulos/piepagina.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-5',
-  'unifunc' => 'content_5be47a0e559e48_60474962',
+  'unifunc' => 'content_5bef468f4d6529_16590625',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dd7f0500d4730d6c90d97f8b87c6b4bb7148ff62' => 
     array (
       0 => '/var/www/html/pos/smarty/templates/modulos/piepagina.tpl',
-      1 => 1541699800,
+      1 => 1542407369,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5be47a0e559e48_60474962 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bef468f4d6529_16590625 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 <?php echo '<script'; ?>
@@ -28,6 +28,9 @@ function content_5be47a0e559e48_60474962 (Smarty_Internal_Template $_smarty_tpl)
 >
 <?php echo '<script'; ?>
  src="js/usuarios.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="js/categorias.js"><?php echo '</script'; ?>
 >
 </body>
 

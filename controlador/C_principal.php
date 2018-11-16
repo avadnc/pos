@@ -47,6 +47,7 @@ class C_principal extends SmartyBC
                     $plantilla->display('modulos/header.tpl');
                     $plantilla->display('modulos/menu.tpl');
                     $plantilla->display('modulos/dashboard.tpl');
+                    $plantilla->display('modulos/footer.tpl');
                     $plantilla->display('modulos/piepagina.tpl');
                     break;
 
@@ -61,6 +62,7 @@ class C_principal extends SmartyBC
                     $plantilla->display('modulos/header.tpl');
                     $plantilla->display('modulos/menu.tpl');
                     $plantilla->display('modulos/usuarios.tpl');
+                    $plantilla->display('modulos/footer.tpl');
                     $plantilla->display('modulos/piepagina.tpl');
                     break;
 
@@ -68,13 +70,14 @@ class C_principal extends SmartyBC
                    
                 $item = null;
                     $valor = null;
-                    $categorias = ControladorCategorias::ctrMostraCategorias($item, $valor);
+                    $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
 
                     $plantilla->assign('categorias', $categorias);
 
                     $plantilla->display('modulos/header.tpl');
                     $plantilla->display('modulos/menu.tpl');
                     $plantilla->display('modulos/categorias.tpl');
+                    $plantilla->display('modulos/footer.tpl');
                     $plantilla->display('modulos/piepagina.tpl');
                     break;
 
@@ -82,6 +85,7 @@ class C_principal extends SmartyBC
                     $plantilla->display('modulos/header.tpl');
                     $plantilla->display('modulos/menu.tpl');
                     $plantilla->display('modulos/productos.tpl');
+                    $plantilla->display('modulos/footer.tpl');
                     $plantilla->display('modulos/piepagina.tpl');
                     break;
 
@@ -89,6 +93,7 @@ class C_principal extends SmartyBC
                     $plantilla->display('modulos/header.tpl');
                     $plantilla->display('modulos/menu.tpl');
                     $plantilla->display('modulos/dashboard.tpl');
+                    $plantilla->display('modulos/footer.tpl');
                     $plantilla->display('modulos/piepagina.tpl');
                     break;
 
@@ -96,6 +101,7 @@ class C_principal extends SmartyBC
                     $plantilla->display('modulos/header.tpl');
                     $plantilla->display('modulos/menu.tpl');
                     $plantilla->display('modulos/clientes.tpl');
+                    $plantilla->display('modulos/footer.tpl');
                     $plantilla->display('modulos/piepagina.tpl');
                     break;
 
@@ -103,6 +109,7 @@ class C_principal extends SmartyBC
                     $plantilla->display('modulos/header.tpl');
                     $plantilla->display('modulos/menu.tpl');
                     $plantilla->display('modulos/administrar-ventas.tpl');
+                    $plantilla->display('modulos/footer.tpl');
                     $plantilla->display('modulos/piepagina.tpl');
                     break;
 
@@ -110,6 +117,7 @@ class C_principal extends SmartyBC
                     $plantilla->display('modulos/header.tpl');
                     $plantilla->display('modulos/menu.tpl');
                     $plantilla->display('modulos/reporte-ventas.tpl');
+                    $plantilla->display('modulos/footer.tpl');
                     $plantilla->display('modulos/piepagina.tpl');
                     break;
 
@@ -121,6 +129,7 @@ class C_principal extends SmartyBC
                     $plantilla->display('modulos/header.tpl');
                     $plantilla->display('modulos/menu.tpl');
                     $plantilla->display('modulos/dashboard.tpl');
+                    $plantilla->display('modulos/footer.tpl');
                     $plantilla->display('modulos/piepagina.tpl');
                     break;
             }

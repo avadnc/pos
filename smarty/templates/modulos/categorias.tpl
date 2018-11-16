@@ -32,20 +32,27 @@
                         </tr>
                     </thead>
                     <tbody>
+                    {*  Inicia Foreach para categorias *}
+                    
+                    {foreach $categorias item=i}
                         <tr>
-                            <td>1</td>
-                            <td>Refresco</td>
+                            <td>{$i.id}</td>
+                            <td>{$i.categoria}</td>
                             <td>
                                 <div class="btn-group">
-                                    <button class="btn btn-warning">
+                                    <button class="btn btn-warning btnEditarCategoria" idCategoria="{$i.id}" data-toggle="modal" data-target="#modalEditarCategoria">
                                         <i class="fa fa-pencil"></i>
                                     </button>
-                                    <button class="btn btn-danger">
+                                    <button class="btn btn-danger btnEliminarCategoria" idCategoria="{$i.id}">
                                         <i class="fa fa-times"></i>
                                     </button>
                                 </div>
-                            </td>
+                            </td>                            
                         </tr>
+                    {/foreach}
+
+                    {* Finaliza Foreach *}
+                    
                     </tbody>
                 </table>
             </div>
@@ -106,7 +113,7 @@
   </div>
 </div>
 
-<!-- Modal Editar Usuario -->
+<!-- Modal Editar Categoria -->
 
 <div id="modalEditarCategoria" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -130,7 +137,8 @@
                     <span class="input-group-addon">
                         <i class="fa fa-th"></i>
                     </span>
-                    <input type="text" class="form-control input-lg" id="nombre" name="editarNombre">
+                    <input type="text" class="form-control input-lg" id="categoria" name="editarCategoria">
+                    <input type="hidden" name="idCategoria" id="idCategoria">
                 </div>
             </div>
           </div>
@@ -145,8 +153,8 @@
       
       {php}
      
-        //$crearUsuario = new ControladorUsuarios();
-        //$crearUsuario->ctrEditarUsuario();
+        $editarCategoria = new ControladorCategorias();
+        $editarCategoria->ctrEditarCategoria();
       
       {/php}
       
@@ -155,6 +163,6 @@
   </div>
 </div>
 {php}
-    //$borrarUsuario = new ControladorUsuarios();
-    //$borrarUsuario->ctrEliminarUsuario();
+    $borrarCategoria = new ControladorCategorias();
+    $borrarCategoria->ctrBorrarCategoria();
 {/php}

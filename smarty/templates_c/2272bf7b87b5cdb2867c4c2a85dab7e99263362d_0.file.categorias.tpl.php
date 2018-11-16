@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-5, created on 2018-11-16 20:02:21
+/* Smarty version 3.1.34-dev-5, created on 2018-11-16 23:41:29
   from '/var/www/html/pos/smarty/templates/modulos/categorias.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-5',
-  'unifunc' => 'content_5bef224d18d4d9_30880611',
+  'unifunc' => 'content_5bef55a98f20f8_91692424',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2272bf7b87b5cdb2867c4c2a85dab7e99263362d' => 
     array (
       0 => '/var/www/html/pos/smarty/templates/modulos/categorias.tpl',
-      1 => 1542398535,
+      1 => 1542411686,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bef224d18d4d9_30880611 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bef55a98f20f8_91692424 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -55,20 +55,36 @@ function content_5bef224d18d4d9_30880611 (Smarty_Internal_Template $_smarty_tpl)
                         </tr>
                     </thead>
                     <tbody>
+                                        
+                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['categorias']->value, 'i');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
+?>
                         <tr>
-                            <td>1</td>
-                            <td>Refresco</td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['i']->value['id'];?>
+</td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['i']->value['categoria'];?>
+</td>
                             <td>
                                 <div class="btn-group">
-                                    <button class="btn btn-warning">
+                                    <button class="btn btn-warning btnEditarCategoria" idCategoria="<?php echo $_smarty_tpl->tpl_vars['i']->value['id'];?>
+" data-toggle="modal" data-target="#modalEditarCategoria">
                                         <i class="fa fa-pencil"></i>
                                     </button>
-                                    <button class="btn btn-danger">
+                                    <button class="btn btn-danger btnEliminarCategoria" idCategoria="<?php echo $_smarty_tpl->tpl_vars['i']->value['id'];?>
+">
                                         <i class="fa fa-times"></i>
                                     </button>
                                 </div>
-                            </td>
+                            </td>                            
                         </tr>
+                    <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+
+                                        
                     </tbody>
                 </table>
             </div>
@@ -120,7 +136,7 @@ function content_5bef224d18d4d9_30880611 (Smarty_Internal_Template $_smarty_tpl)
   </div>
 </div>
 
-<!-- Modal Editar Usuario -->
+<!-- Modal Editar Categoria -->
 
 <div id="modalEditarCategoria" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -138,7 +154,8 @@ function content_5bef224d18d4d9_30880611 (Smarty_Internal_Template $_smarty_tpl)
                     <span class="input-group-addon">
                         <i class="fa fa-th"></i>
                     </span>
-                    <input type="text" class="form-control input-lg" id="nombre" name="editarNombre">
+                    <input type="text" class="form-control input-lg" id="categoria" name="editarCategoria">
+                    <input type="hidden" name="idCategoria" id="idCategoria">
                 </div>
             </div>
           </div>
@@ -150,8 +167,8 @@ function content_5bef224d18d4d9_30880611 (Smarty_Internal_Template $_smarty_tpl)
       
       <?php 
      
-        //$crearUsuario = new ControladorUsuarios();
-        //$crearUsuario->ctrEditarUsuario();
+        $editarCategoria = new ControladorCategorias();
+        $editarCategoria->ctrEditarCategoria();
       
       ?>
       
@@ -160,7 +177,7 @@ function content_5bef224d18d4d9_30880611 (Smarty_Internal_Template $_smarty_tpl)
   </div>
 </div>
 <?php 
-    //$borrarUsuario = new ControladorUsuarios();
-    //$borrarUsuario->ctrEliminarUsuario();
+    $borrarCategoria = new ControladorCategorias();
+    $borrarCategoria->ctrBorrarCategoria();
 }
 }
