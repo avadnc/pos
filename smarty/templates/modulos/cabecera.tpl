@@ -35,7 +35,8 @@
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/responsive.bootstrap.min.css">
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
+    <!-- Plugin iCheck-->
+    <link rel="stylesheet" href="plugins/iCheck/all.css">
     <!-- ======================================================================= -->
     <!-- Seccion para los Scripts                                                -->
     <!-- ======================================================================= -->
@@ -58,6 +59,8 @@
     <script src="bower_components/datatables.net-bs/js/responsive.bootstrap.js"></script>
     <!-- SweetAlert -->
     <script src="js/sweetalert.min.js"></script>
+    <!-- Plugin iCheck -->
+    <script src="plugins/iCheck/icheck.min.js"></script>
 </head>
 
 <!-- ======================================================================= -->

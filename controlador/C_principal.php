@@ -67,8 +67,8 @@ class C_principal extends SmartyBC
                     break;
 
                 case 'categorias':
-                   
-                $item = null;
+
+                    $item = null;
                     $valor = null;
                     $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
 
@@ -82,6 +82,15 @@ class C_principal extends SmartyBC
                     break;
 
                 case 'productos':
+
+                    $item = null;
+                    $valor = null;
+                    $productos = ControladorProductos::ctrMostrarProductos($item, $valor);
+
+                    var_dump($productos);
+
+                    $plantilla->assign('productos', $productos);
+
                     $plantilla->display('modulos/header.tpl');
                     $plantilla->display('modulos/menu.tpl');
                     $plantilla->display('modulos/productos.tpl');
