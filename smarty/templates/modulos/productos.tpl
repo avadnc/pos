@@ -23,7 +23,7 @@
                </button>
             </div>
             <div class="box-body">
-                <table class="table table-bordered table-striped dt-responsive tablas">
+                <table class="table table-bordered table-striped dt-responsive tablaProductos">
                     <thead>
                         <tr>
                             <th style="width:10px">#</th>
@@ -39,12 +39,12 @@
                             <th>ClaveProdServ</th>
                             <th>Unidad de Medida</th>
                             <th>Agregado en:</th>
-                            <th>Acciones</th>
+                            {* <th>Acciones</th> *}
 
 
                         </tr>
                     </thead>
-                    <tbody>
+                   {*  <tbody>
                     {foreach $productos item=i}
                         <tr>
                             <td>{$i.id}</td>
@@ -58,7 +58,7 @@
                             <td>{$i.codigo}</td>
                             <td>{$i.descripcion}</td>
                             <td>{$i.marca}</td>
-                            <td>{$i.id_categoria}</td>
+                            <td>{$i.categoria}</td>
                             <td>{$i.stock}</td>
                             <td>${$i.precio_compra}</td>
                             <td>${$i.precio_venta}</td>
@@ -77,8 +77,8 @@
                                 </div>
                             </td>
                         </tr>
-                        {/foreach}
-                    </tbody>
+                        {/foreach} 
+                    </tbody> *}
                 </table>
             </div>
         </div>
@@ -88,6 +88,22 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+
+<script>
+// =============================================================================
+// carga tabla dinámica
+// =============================================================================
+
+$(document).ready(function() {
+    $('.tablaProductos').DataTable({
+       "data": {$productos|@json_encode nofilter},
+        "searching": false,
+		"paging": false 
+    });
+});
+</script>
+
 
 <!-- Modal Agregar Usuario -->
 

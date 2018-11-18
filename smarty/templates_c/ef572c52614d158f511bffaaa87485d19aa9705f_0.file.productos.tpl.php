@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-5, created on 2018-11-17 04:54:13
+/* Smarty version 3.1.34-dev-5, created on 2018-11-17 22:13:47
   from '/var/www/html/pos/smarty/templates/modulos/productos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-5',
-  'unifunc' => 'content_5bef9ef5426440_34154636',
+  'unifunc' => 'content_5bf0929b6007b0_55274087',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ef572c52614d158f511bffaaa87485d19aa9705f' => 
     array (
       0 => '/var/www/html/pos/smarty/templates/modulos/productos.tpl',
-      1 => 1542430450,
+      1 => 1542492825,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bef9ef5426440_34154636 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bf0929b6007b0_55274087 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -46,7 +46,7 @@ function content_5bef9ef5426440_34154636 (Smarty_Internal_Template $_smarty_tpl)
                </button>
             </div>
             <div class="box-body">
-                <table class="table table-bordered table-striped dt-responsive tablas">
+                <table class="table table-bordered table-striped dt-responsive tablaProductos">
                     <thead>
                         <tr>
                             <th style="width:10px">#</th>
@@ -62,67 +62,11 @@ function content_5bef9ef5426440_34154636 (Smarty_Internal_Template $_smarty_tpl)
                             <th>ClaveProdServ</th>
                             <th>Unidad de Medida</th>
                             <th>Agregado en:</th>
-                            <th>Acciones</th>
-
+                            
 
                         </tr>
                     </thead>
-                    <tbody>
-                    <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['productos']->value, 'i');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
-?>
-                        <tr>
-                            <td><?php echo $_smarty_tpl->tpl_vars['i']->value['id'];?>
-</td>
-                            <td>
-                            <?php if ($_smarty_tpl->tpl_vars['i']->value['imagen'] == '') {?>
-                                <img src="img/productos/producto.png" class="img-thumbnail" width="40px" >    
-                            <?php } else { ?>
-                                <img src="<?php echo $_smarty_tpl->tpl_vars['i']->value['imagen'];?>
-" class="img-thumbnail" width="40px" >    
-                            <?php }?>
-                            </td>
-                            <td><?php echo $_smarty_tpl->tpl_vars['i']->value['codigo'];?>
-</td>
-                            <td><?php echo $_smarty_tpl->tpl_vars['i']->value['descripcion'];?>
-</td>
-                            <td><?php echo $_smarty_tpl->tpl_vars['i']->value['marca'];?>
-</td>
-                            <td><?php echo $_smarty_tpl->tpl_vars['i']->value['id_categoria'];?>
-</td>
-                            <td><?php echo $_smarty_tpl->tpl_vars['i']->value['stock'];?>
-</td>
-                            <td>$<?php echo $_smarty_tpl->tpl_vars['i']->value['precio_compra'];?>
-</td>
-                            <td>$<?php echo $_smarty_tpl->tpl_vars['i']->value['precio_venta'];?>
-</td>
-                            <td><?php echo $_smarty_tpl->tpl_vars['i']->value['moneda'];?>
-</td>
-                            <td><?php echo $_smarty_tpl->tpl_vars['i']->value['claveprodserv'];?>
-</td>
-                            <td><?php echo $_smarty_tpl->tpl_vars['i']->value['umed'];?>
-</td>
-                            <td><?php echo $_smarty_tpl->tpl_vars['i']->value['fecha'];?>
-</td>
-                            <td>
-                                <div class="btn-group">
-                                    <button class="btn btn-warning">
-                                        <i class="fa fa-pencil"></i>
-                                    </button>
-                                    <button class="btn btn-danger">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-                    </tbody>
-                </table>
+                                   </table>
             </div>
         </div>
         <!-- /.box -->
@@ -131,6 +75,25 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+
+<?php echo '<script'; ?>
+>
+// =============================================================================
+// carga tabla dinámica
+// =============================================================================
+
+$(document).ready(function() {
+    $('.tablaProductos').DataTable({
+       "data": <?php echo json_encode($_smarty_tpl->tpl_vars['productos']->value);?>
+,
+        "searching": false,
+		"paging": false 
+    });
+});
+<?php echo '</script'; ?>
+>
+
 
 <!-- Modal Agregar Usuario -->
 
@@ -236,5 +199,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
       </form>
     </div>
   </div>
-</div><?php }
+</div>
+<?php }
 }
