@@ -17,24 +17,14 @@ $(document).ready(function() {
             { "data": "descripcion" },
             {
                 "data": function(data) {
-                    if (data['imagen'] == '' || data['imagen'] == null) {
+                    if (data.imagen == '' || data.imagen == null) {
                         return '<img src="img/productos/producto.png" style="width:40px;">';
                     } else {
-                        return '<img src="' + data['imagen'] + '" style="width:40px;">';
+                        return '<img src="' + data.imagen + '" style="width:40px;">';
                     }
                 }
             },
-            {
-                "data": function(data) {
-
-                    // =========================================================
-                    // pendiente de revisar para mandar variables de stock
-                    // =========================================================
-
-                    return "<button class='btn btn-success'>" + data['stock'] + "</button>";
-
-                }
-            },
+            { "data": "stock" },
             { "data": "precio_compra" },
             { "data": "precio_venta" },
             { "data": "moneda" },
@@ -81,10 +71,49 @@ $(document).ready(function() {
                 'sSortAscending': ': Activar para odernar la columna de manera ascendente',
                 'sSortDescending': 'Activar para ordenar la columna de manera descendente'
             }
+        },
+        'rowCallback': function(row, data, index) {
+
+            if (data.stock >= 20) {
+                $(row).find('td:eq(5)').css('background-color', 'green');
+                $(row).find('td:eq(5)').css('color', 'white');
+                $(row).find('td:eq(5)').css('font-weight', 'bold');
+            } else {
+                $(row).find('td:eq(5)').css('background-color', 'red');
+                $(row).find('td:eq(5)').css('color', 'white');
+                $(row).find('td:eq(5)').css('font-weight', 'bold');
+
+            }
         }
 
     });
 });
+
+// =============================================================================
+// Capturar Categoria Codigo
+// =============================================================================
+
+// $(document).on('change', '#nuevaCategoria', function() {
+
+//     var idCategoria = $(this).val();
+//     var datos = new FormData();
+
+//     datos.append('idCategoria', idCategoria);
+//     $.ajax({
+//         url: "ajax/productos.ajax.php",
+//         method: "POST",
+//         data: datos,
+//         cache: false,
+//         contentType: false,
+//         processData: false,
+//         dataType: 'json',
+//         success: function(respuesta) {
+
+//             var nuevoCodigo = respuesta.codigo;
+//             console.log(nuevoCodigo);
+//         }
+//     });
+// });
 
 $(document).on('click', '.btnEditarProducto', function() {
 

@@ -72,7 +72,21 @@
       // ======================================================================= *}
       <div class="modal-body">
         <div class="box-body">
-            
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-folder"></i>
+                    </span>
+                    <select class="form-control input-lg" id="nuevaCategoria" name="nuevaCategoria">
+                    <option>Seleccionar Categoria</option>
+                    {foreach $categorias item=i}
+                    
+                        <option value="{$i.id}">{$i.categoria}</option>
+
+                    {/foreach}
+                    </select>
+                </div>
+            </div>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon">
@@ -89,19 +103,7 @@
                     <input type="text" class="form-control input-lg" name="nuevaDescripcion" placeholder="Ingresar Descripcion">
                 </div>
             </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="fa fa-folder"></i>
-                    </span>
-                    <select class="form-control input-lg" name="nuevaCategoria">
-                        <option value="">Seleccione Categoria</option>
-                        <option value="Refreescos">Refrescos</option>
-                        <option value="Lala">Lala</option>
-                        <option value="Otras">Otras</option>
-                    </select>
-                </div>
-            </div>
+            
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon">
@@ -175,7 +177,7 @@
                 <div class="col-xs-3">
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <i class="fa fa-cube"></i>
+                            <i class="fa fa-file"></i>
                         </span>
                         <input type="text" class="form-control input-lg" name="nuevaUmed" placeholder="UMED" required>
                     </div>

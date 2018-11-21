@@ -10,7 +10,7 @@ class ModeloProductos
     {
         if ($item != null) {
 
-            $stmt = Conexion::conectar()->prepare('SELECT id, id_categoria, codigo, descripcion, imagen, stock, precio_compra, precio_venta, moneda, marca, ventas, fecha, claveprodserv, umed from ' . $tabla . ' where ' . $item . ' = :' . $item );
+            $stmt = Conexion::conectar()->prepare('SELECT id, id_categoria, codigo, descripcion, imagen, stock, precio_compra, precio_venta, moneda, marca, ventas, fecha, claveprodserv, umed from ' . $tabla . ' where ' . $item . ' = :' . $item .' ORDER BY ID DESC');
 
             $stmt->bindParam(':' . $item, $valor, PDO::PARAM_STR);
             $stmt->execute();

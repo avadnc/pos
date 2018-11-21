@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-5, created on 2018-11-21 04:35:08
+/* Smarty version 3.1.34-dev-5, created on 2018-11-21 17:46:00
   from '/var/www/html/pos/smarty/templates/modulos/productos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-5',
-  'unifunc' => 'content_5bf4e07c2b7776_35098627',
+  'unifunc' => 'content_5bf599d836eeb7_08976009',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ef572c52614d158f511bffaaa87485d19aa9705f' => 
     array (
       0 => '/var/www/html/pos/smarty/templates/modulos/productos.tpl',
-      1 => 1542774899,
+      1 => 1542822354,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bf4e07c2b7776_35098627 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bf599d836eeb7_08976009 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -89,7 +89,30 @@ function content_5bf4e07c2b7776_35098627 (Smarty_Internal_Template $_smarty_tpl)
 
             <div class="modal-body">
         <div class="box-body">
-            
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-folder"></i>
+                    </span>
+                    <select class="form-control input-lg" id="nuevaCategoria" name="nuevaCategoria">
+                    <option>Seleccionar Categoria</option>
+                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['categorias']->value, 'i');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
+?>
+                    
+                        <option value="<?php echo $_smarty_tpl->tpl_vars['i']->value['id'];?>
+"><?php echo $_smarty_tpl->tpl_vars['i']->value['categoria'];?>
+</option>
+
+                    <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                    </select>
+                </div>
+            </div>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon">
@@ -106,19 +129,7 @@ function content_5bf4e07c2b7776_35098627 (Smarty_Internal_Template $_smarty_tpl)
                     <input type="text" class="form-control input-lg" name="nuevaDescripcion" placeholder="Ingresar Descripcion">
                 </div>
             </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="fa fa-folder"></i>
-                    </span>
-                    <select class="form-control input-lg" name="nuevaCategoria">
-                        <option value="">Seleccione Categoria</option>
-                        <option value="Refreescos">Refrescos</option>
-                        <option value="Lala">Lala</option>
-                        <option value="Otras">Otras</option>
-                    </select>
-                </div>
-            </div>
+            
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon">
@@ -178,7 +189,7 @@ function content_5bf4e07c2b7776_35098627 (Smarty_Internal_Template $_smarty_tpl)
                 <div class="col-xs-3">
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <i class="fa fa-cube"></i>
+                            <i class="fa fa-file"></i>
                         </span>
                         <input type="text" class="form-control input-lg" name="nuevaUmed" placeholder="UMED" required>
                     </div>

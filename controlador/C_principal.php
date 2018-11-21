@@ -88,6 +88,12 @@ class C_principal extends SmartyBC
                     $productos = ControladorProductos::ctrMostrarProductos($item, $valor);
 
                     $plantilla->assign('productos', $productos);
+                    
+                    $item = null;
+                    $valor = null;
+                    $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
+
+                    $plantilla->assign('categorias', $categorias);
 
                     $plantilla->display('modulos/header.tpl');
                     $plantilla->display('modulos/menu.tpl');
