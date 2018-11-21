@@ -1,5 +1,8 @@
 <?php
-require_once '../modelos/M';
+
+require_once '../controlador/C_productos.php';
+require_once '../modelos/M_productos.php';
+
 class TablaProductos
 {
 // =============================================================================
@@ -7,9 +10,11 @@ class TablaProductos
 // =============================================================================
     public function mostrarTablaProductos()
     {
-
-        echo 'hola';
-
+        $item = null;
+        $valor = null;
+        $productos = ControladorProductos::ctrMostrarProductos($item, $valor);
+        $productosJson['data'] = $productos;
+        echo json_encode($productosJson);
     }
 
 }

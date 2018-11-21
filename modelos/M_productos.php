@@ -22,7 +22,7 @@ class ModeloProductos
             $stmt = Conexion::conectar()->prepare('SELECT productos.id, categorias.categoria as categoria, codigo, descripcion, imagen, stock, precio_compra, precio_venta, moneda, marca, ventas, fecha, claveprodserv, umed from ' . $tabla . ' LEFT JOIN categorias on productos.id_categoria = categorias.id' );
 
             $stmt->execute();
-            return $stmt->fetchAll();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         $stmt->close();
