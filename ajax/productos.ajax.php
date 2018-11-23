@@ -4,20 +4,35 @@ require_once '../modelos/M_productos.php';
 
 class AjaxProductos
 {
-    public $idCategoria;
+    public $codigProducto;
+    public $idProducto;
+
     // =========================================================================
-    // Generar codigo a partir de idCategoria
+    // Consultar codigo a partir de idCategoria
     // =========================================================================
 
-    public function ajaxCrearCodigoProducto()
+    public function ajaxConsultarCodigoProducto()
     {
-        $item = 'id_categoria';
-        $valor = $this->idCategoria;
-
-// $tabla='productos';
+        $item = 'codigo';
+        $valor = $this->codigoProducto;
 
         $respuesta = ControladorProductos::ctrMostrarProductos($item, $valor,$tabla);
         echo json_encode($respuesta);
+    }
+
+    // =========================================================================
+    // Editar Prodcuto
+    // =========================================================================
+
+    public function ajaxEditarProducto()
+    {
+        $item = 'id';
+        $valor = $this->idProducto;
+
+        $respuesta = ControladorProductos::ctrMostrarProductos($item,$valor);
+
+        echo json_encode($respuesta);
+        
     }
 }
 
@@ -25,8 +40,17 @@ class AjaxProductos
 // Generar codigo
 // =============================================================================
 
-if (isset($_POST['idCategoria'])) {
+if (isset($_POST['codigoProducto'])) {
     $codigoProducto = new AjaxProductos();
-    $codigoProducto->idCategoria = $_POST['idCategoria'];
-    $codigoProducto->ajaxCrearCodigoProducto();
+    $codigoProducto->codigoProducto = $_POST['codigoProducto'];
+    $codigoProducto->ajaxConsultarCodigoProducto();
+}
+
+// =============================================================================
+// Objeto editar producto
+// =============================================================================
+if (isset($_POST['idProducto'])) {
+    $editarProducto = new AjaxProductos();
+    $editarProducto->idProducto = $_POST['idProducto'];
+    $editarProducto->ajaxEditarProducto();
 }

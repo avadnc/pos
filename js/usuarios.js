@@ -2,7 +2,7 @@
 // Subiendo foto Usuario
 // =============================================================================
 
-$('.nuevaFoto').change(function() {
+$(document).on('change', '.nuevaFoto', function() {
 
     var imagen = this.files[0];
 

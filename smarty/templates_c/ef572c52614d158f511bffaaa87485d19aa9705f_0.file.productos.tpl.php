@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-5, created on 2018-11-21 17:46:00
+/* Smarty version 3.1.34-dev-5, created on 2018-11-23 18:03:20
   from '/var/www/html/pos/smarty/templates/modulos/productos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-5',
-  'unifunc' => 'content_5bf599d836eeb7_08976009',
+  'unifunc' => 'content_5bf840e8f1b040_53516469',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ef572c52614d158f511bffaaa87485d19aa9705f' => 
     array (
       0 => '/var/www/html/pos/smarty/templates/modulos/productos.tpl',
-      1 => 1542822354,
+      1 => 1542996199,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bf599d836eeb7_08976009 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bf840e8f1b040_53516469 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -76,7 +76,7 @@ function content_5bf599d836eeb7_08976009 (Smarty_Internal_Template $_smarty_tpl)
 </div>
 <!-- /.content-wrapper -->
 
-<!-- Modal Agregar Usuario -->
+<!-- Modal Agregar Producto -->
 
 <div id="modalAgregarProducto" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -84,7 +84,7 @@ function content_5bf599d836eeb7_08976009 (Smarty_Internal_Template $_smarty_tpl)
     <form role="form" method="post" enctype="multipart/form-data">
           <div class="modal-header" style="background:#3c8dbc; color:white;">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Agregar Usuarios</h4>
+        <h4 class="modal-title">Agregar Producto</h4>
       </div>
 
             <div class="modal-body">
@@ -118,7 +118,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     <span class="input-group-addon">
                         <i class="fa fa-barcode"></i>
                     </span>
-                    <input type="text" class="form-control input-lg" name="nuevoCodigo" placeholder="Ingresar Codigo">
+                    <input type="text" class="form-control input-lg" id="nuevoCodigo" name="nuevoCodigo" placeholder="Ingresar Codigo">
                 </div>
             </div>
             <div class="form-group">
@@ -140,24 +140,24 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </div>
 
             <div class="form-group row">
-                <div class="col-xs-6">
+                <div class="col-xs-12 col-sm-6">
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="fa fa-shopping-cart"></i>
                         </span>
-                        <input type="number" min="0" class="form-control input-lg" name="nuevoPrecioCompra" placeholder="Ingresar Precio de Compra">
+                        <input type="number" min="0" step="any" class="form-control input-lg" id="nuevoPrecioCompra" name="nuevoPrecioCompra" placeholder="Precio de Compra">
                     </div>
                 </div>
-                <div class="col-xs-6">
+                <div class="col-xs-12 col-sm-6">
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="fa fa-shopping-basket"></i>
                         </span>
-                        <input type="number" min="0" class="form-control input-lg" name="nuevoPrecioVenta" placeholder="Ingresar Precio de Venta">
+                        <input type="number" min="0" step="any" class="form-control input-lg" id="nuevoPrecioVenta" name="nuevoPrecioVenta" placeholder="Precio de Venta">
                     </div>
               
                 <br>
-                                <div class="col-xs-6">
+                                <div class="col-xs-12 col-sm-6">
                     <div class="form-group">
                         <label>
                             <input type="checkbox" class="minimal porcentaje" checked>
@@ -165,7 +165,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                         </label>
                     </div>
                 </div>
-                                   <div class="col-xs-6" style="padding:0">
+                                   <div class="col-xs-12 col-sm-6" style="padding:0">
                         <div class="input-group">
                             <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="35" required>
                             <span class="input-group-addon">
@@ -178,7 +178,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             
 
                         <div class="form-group row">
-                <div class="col-xs-6">
+                <div class="col-xs-12 col-sm-6">
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="fa fa-code"></i>
@@ -205,9 +205,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
               </div>
             <div clasS="form-group">
                 <div class="panel"><h4>SUBIR IMAGEN</h4></div>
-                <input type="file" id="nuevaFoto" name="nuevaFoto">
+                <input type="file" class="nuevaImagen" name="nuevaImagen">
                 <p class="help-block">Tamaño Maximo de la foto 2Mb</p>
-                <img src="img/productos/producto.png" class="img-thumbnail" width="100px">
+                <img src="img/productos/producto.png" class="img-thumbnail previsualizar" width="100px">
             </div>
           </div>
       </div>
@@ -216,9 +216,18 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
       </div>   
       </form>
+      <?php 
+
+        $crearProducto = new ControladorProductos();
+        $crearProducto->ctrCrearProducto();
+
+      ?>
     </div>
   </div>
 </div>
+
+
+<!-- Modal Agregar Producto -->
 
 <div id="modalEditarProducto" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -226,18 +235,27 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     <form role="form" method="post" enctype="multipart/form-data">
           <div class="modal-header" style="background:#3c8dbc; color:white;">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Agregar Usuarios</h4>
+        <h4 class="modal-title">Editar Producto</h4>
       </div>
 
             <div class="modal-body">
         <div class="box-body">
-            
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-folder"></i>
+                    </span>
+                    <select class="form-control input-lg" name="editarCategoria" readonly>
+                    <option  id="editarCategoria"></option>
+                    </select>
+                </div>
+            </div>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon">
                         <i class="fa fa-barcode"></i>
                     </span>
-                    <input type="text" class="form-control input-lg" name="nuevoCodigo" placeholder="Ingresar Codigo">
+                    <input type="text" class="form-control input-lg" id="editarCodigo" name="editarCodigo" readonly>
                 </div>
             </div>
             <div class="form-group">
@@ -245,50 +263,38 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     <span class="input-group-addon">
                         <i class="fa fa-tags"></i>
                     </span>
-                    <input type="text" class="form-control input-lg" name="nuevaDescripcion" placeholder="Ingresar Descripcion">
+                    <input type="text" class="form-control input-lg" name="editarDescripcion" id="editarDescripcion">
                 </div>
             </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="fa fa-folder"></i>
-                    </span>
-                    <select class="form-control input-lg" name="nuevaCategoria">
-                        <option value="">Seleccione Categoria</option>
-                        <option value="Refreescos">Refrescos</option>
-                        <option value="Lala">Lala</option>
-                        <option value="Otras">Otras</option>
-                    </select>
-                </div>
-            </div>
+            
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon">
                         <i class="fa fa-cube"></i>
                     </span>
-                    <input type="number" min="0" class="form-control input-lg" name="nuevoStock" placeholder="Ingresar Stock">
+                    <input type="number" min="0" class="form-control input-lg" name="editarStock" id="editarStock">
                 </div>
             </div>
 
             <div class="form-group row">
-                <div class="col-xs-6">
+                <div class="col-xs-12 col-sm-6">
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="fa fa-shopping-cart"></i>
                         </span>
-                        <input type="number" min="0" class="form-control input-lg" name="nuevoPrecioCompra" placeholder="Ingresar Precio de Compra">
+                        <input type="number" min="0" step="any" class="form-control input-lg" id="editarPrecioCompra" name="editarPrecioCompra">
                     </div>
                 </div>
-                <div class="col-xs-6">
+                <div class="col-xs-12 col-sm-6">
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="fa fa-shopping-basket"></i>
                         </span>
-                        <input type="number" min="0" class="form-control input-lg" name="nuevoPrecioVenta" placeholder="Ingresar Precio de Venta">
+                        <input type="number" min="0" step="any" class="form-control input-lg" id="editarPrecioVenta" name="editarPrecioVenta">
                     </div>
               
                 <br>
-                                <div class="col-xs-6">
+                                <div class="col-xs-12 col-sm-6">
                     <div class="form-group">
                         <label>
                             <input type="checkbox" class="minimal porcentaje" checked>
@@ -296,7 +302,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                         </label>
                     </div>
                 </div>
-                                   <div class="col-xs-6" style="padding:0">
+                                   <div class="col-xs-12 col-sm-6" style="padding:0">
                         <div class="input-group">
                             <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="35" required>
                             <span class="input-group-addon">
@@ -306,12 +312,40 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                    </div>
                  </div>
              </div>
+            
 
+                        <div class="form-group row">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-code"></i>
+                        </span>
+                        <input type="number" class="form-control input-lg" name="editarClaveProdServ" id="editarClaveProdServ" required>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-file"></i>
+                        </span>
+                        <input type="text" class="form-control input-lg" name="editarUmed" id="editarUmed" required>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-dollar"></i>
+                        </span>
+                        <input type="text" class="form-control input-lg" name="editarMoneda" id="editarMoneda" required>
+                    </div>
+                </div>
+              </div>
             <div clasS="form-group">
-                <div class="panel">SUBIR IMAGEN</div>
-                <input type="file" id="nuevaFoto" name="nuevaFoto">
+                <div class="panel"><h4>SUBIR IMAGEN</h4></div>
+                <input type="file" class="nuevaImagen" name="editarImagen">
                 <p class="help-block">Tamaño Maximo de la foto 2Mb</p>
-                <img src="img/productos/producto.png" class="img-thumbnail" width="100px">
+                <img src="img/productos/producto.png" class="img-thumbnail previsualizar" width="100px">
+                <input type="hidden" name="imagenActual" id="imagenActual">
             </div>
           </div>
       </div>
@@ -320,8 +354,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
       </div>   
       </form>
-    </div>
+          </div>
   </div>
-</div>
-<?php }
+</div><?php }
 }

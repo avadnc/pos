@@ -86,7 +86,7 @@ class C_principal extends SmartyBC
                     $item = null;
                     $valor = null;
                     $productos = ControladorProductos::ctrMostrarProductos($item, $valor);
-
+// var_dump($productos);
                     $plantilla->assign('productos', $productos);
                     
                     $item = null;

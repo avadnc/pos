@@ -53,7 +53,7 @@
 </div>
 <!-- /.content-wrapper -->
 
-<!-- Modal Agregar Usuario -->
+<!-- Modal Agregar Producto -->
 
 <div id="modalAgregarProducto" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -64,7 +64,7 @@
     // ========================================================================= *}
       <div class="modal-header" style="background:#3c8dbc; color:white;">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Agregar Usuarios</h4>
+        <h4 class="modal-title">Agregar Producto</h4>
       </div>
 
       {* // =======================================================================
@@ -92,7 +92,7 @@
                     <span class="input-group-addon">
                         <i class="fa fa-barcode"></i>
                     </span>
-                    <input type="text" class="form-control input-lg" name="nuevoCodigo" placeholder="Ingresar Codigo">
+                    <input type="text" class="form-control input-lg" id="nuevoCodigo" name="nuevoCodigo" placeholder="Ingresar Codigo">
                 </div>
             </div>
             <div class="form-group">
@@ -119,27 +119,27 @@
 // =============================================================================
 *}
             <div class="form-group row">
-                <div class="col-xs-6">
+                <div class="col-xs-12 col-sm-6">
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="fa fa-shopping-cart"></i>
                         </span>
-                        <input type="number" min="0" class="form-control input-lg" name="nuevoPrecioCompra" placeholder="Ingresar Precio de Compra">
+                        <input type="number" min="0" step="any" class="form-control input-lg" id="nuevoPrecioCompra" name="nuevoPrecioCompra" placeholder="Precio de Compra">
                     </div>
                 </div>
-                <div class="col-xs-6">
+                <div class="col-xs-12 col-sm-6">
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="fa fa-shopping-basket"></i>
                         </span>
-                        <input type="number" min="0" class="form-control input-lg" name="nuevoPrecioVenta" placeholder="Ingresar Precio de Venta">
+                        <input type="number" min="0" step="any" class="form-control input-lg" id="nuevoPrecioVenta" name="nuevoPrecioVenta" placeholder="Precio de Venta">
                     </div>
               
                 <br>
                 {* // ==========================================================
                    // Checkbox para porcentaje
                    // ========================================================== *}
-                <div class="col-xs-6">
+                <div class="col-xs-12 col-sm-6">
                     <div class="form-group">
                         <label>
                             <input type="checkbox" class="minimal porcentaje" checked>
@@ -150,7 +150,7 @@
                 {* // ==========================================================
                    // Entrada Porcentaje
                    // ========================================================== *}
-                   <div class="col-xs-6" style="padding:0">
+                   <div class="col-xs-12 col-sm-6" style="padding:0">
                         <div class="input-group">
                             <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="35" required>
                             <span class="input-group-addon">
@@ -166,7 +166,7 @@
               // Clave Producto Servicio + UMED
               // ===============================================================*}
             <div class="form-group row">
-                <div class="col-xs-6">
+                <div class="col-xs-12 col-sm-6">
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="fa fa-code"></i>
@@ -193,9 +193,9 @@
               </div>
             <div clasS="form-group">
                 <div class="panel"><h4>SUBIR IMAGEN</h4></div>
-                <input type="file" id="nuevaFoto" name="nuevaFoto">
+                <input type="file" class="nuevaImagen" name="nuevaImagen">
                 <p class="help-block">Tamaño Maximo de la foto 2Mb</p>
-                <img src="img/productos/producto.png" class="img-thumbnail" width="100px">
+                <img src="img/productos/producto.png" class="img-thumbnail previsualizar" width="100px">
             </div>
           </div>
       </div>
@@ -207,14 +207,21 @@
         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
       </div>   
       </form>
+      {php}
+
+        $crearProducto = new ControladorProductos();
+        $crearProducto->ctrCrearProducto();
+
+      {/php}
     </div>
   </div>
 </div>
-{*
-// =============================================================================
-// Modal Editar Producto 
-// =============================================================================
-*}
+
+{*// =============================================================================
+// Modal Editar Producto
+// =============================================================================*}
+
+<!-- Modal Agregar Producto -->
 
 <div id="modalEditarProducto" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -225,7 +232,7 @@
     // ========================================================================= *}
       <div class="modal-header" style="background:#3c8dbc; color:white;">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Agregar Usuarios</h4>
+        <h4 class="modal-title">Editar Producto</h4>
       </div>
 
       {* // =======================================================================
@@ -233,13 +240,22 @@
       // ======================================================================= *}
       <div class="modal-body">
         <div class="box-body">
-            
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-folder"></i>
+                    </span>
+                    <select class="form-control input-lg" name="editarCategoria" readonly>
+                    <option  id="editarCategoria"></option>
+                    </select>
+                </div>
+            </div>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon">
                         <i class="fa fa-barcode"></i>
                     </span>
-                    <input type="text" class="form-control input-lg" name="nuevoCodigo" placeholder="Ingresar Codigo">
+                    <input type="text" class="form-control input-lg" id="editarCodigo" name="editarCodigo" readonly>
                 </div>
             </div>
             <div class="form-group">
@@ -247,28 +263,16 @@
                     <span class="input-group-addon">
                         <i class="fa fa-tags"></i>
                     </span>
-                    <input type="text" class="form-control input-lg" name="nuevaDescripcion" placeholder="Ingresar Descripcion">
+                    <input type="text" class="form-control input-lg" name="editarDescripcion" id="editarDescripcion">
                 </div>
             </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="fa fa-folder"></i>
-                    </span>
-                    <select class="form-control input-lg" name="nuevaCategoria">
-                        <option value="">Seleccione Categoria</option>
-                        <option value="Refreescos">Refrescos</option>
-                        <option value="Lala">Lala</option>
-                        <option value="Otras">Otras</option>
-                    </select>
-                </div>
-            </div>
+            
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon">
                         <i class="fa fa-cube"></i>
                     </span>
-                    <input type="number" min="0" class="form-control input-lg" name="nuevoStock" placeholder="Ingresar Stock">
+                    <input type="number" min="0" class="form-control input-lg" name="editarStock" id="editarStock">
                 </div>
             </div>
 
@@ -278,27 +282,27 @@
 // =============================================================================
 *}
             <div class="form-group row">
-                <div class="col-xs-6">
+                <div class="col-xs-12 col-sm-6">
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="fa fa-shopping-cart"></i>
                         </span>
-                        <input type="number" min="0" class="form-control input-lg" name="nuevoPrecioCompra" placeholder="Ingresar Precio de Compra">
+                        <input type="number" min="0" step="any" class="form-control input-lg" id="editarPrecioCompra" name="editarPrecioCompra">
                     </div>
                 </div>
-                <div class="col-xs-6">
+                <div class="col-xs-12 col-sm-6">
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="fa fa-shopping-basket"></i>
                         </span>
-                        <input type="number" min="0" class="form-control input-lg" name="nuevoPrecioVenta" placeholder="Ingresar Precio de Venta">
+                        <input type="number" min="0" step="any" class="form-control input-lg" id="editarPrecioVenta" name="editarPrecioVenta">
                     </div>
               
                 <br>
                 {* // ==========================================================
                    // Checkbox para porcentaje
                    // ========================================================== *}
-                <div class="col-xs-6">
+                <div class="col-xs-12 col-sm-6">
                     <div class="form-group">
                         <label>
                             <input type="checkbox" class="minimal porcentaje" checked>
@@ -309,7 +313,7 @@
                 {* // ==========================================================
                    // Entrada Porcentaje
                    // ========================================================== *}
-                   <div class="col-xs-6" style="padding:0">
+                   <div class="col-xs-12 col-sm-6" style="padding:0">
                         <div class="input-group">
                             <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="35" required>
                             <span class="input-group-addon">
@@ -319,12 +323,43 @@
                    </div>
                  </div>
              </div>
+            
 
+            {*// ===============================================================
+              // Clave Producto Servicio + UMED
+              // ===============================================================*}
+            <div class="form-group row">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-code"></i>
+                        </span>
+                        <input type="number" class="form-control input-lg" name="editarClaveProdServ" id="editarClaveProdServ" required>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-file"></i>
+                        </span>
+                        <input type="text" class="form-control input-lg" name="editarUmed" id="editarUmed" required>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-dollar"></i>
+                        </span>
+                        <input type="text" class="form-control input-lg" name="editarMoneda" id="editarMoneda" required>
+                    </div>
+                </div>
+              </div>
             <div clasS="form-group">
-                <div class="panel">SUBIR IMAGEN</div>
-                <input type="file" id="nuevaFoto" name="nuevaFoto">
+                <div class="panel"><h4>SUBIR IMAGEN</h4></div>
+                <input type="file" class="nuevaImagen" name="editarImagen">
                 <p class="help-block">Tamaño Maximo de la foto 2Mb</p>
-                <img src="img/productos/producto.png" class="img-thumbnail" width="100px">
+                <img src="img/productos/producto.png" class="img-thumbnail previsualizar" width="100px">
+                <input type="hidden" name="imagenActual" id="imagenActual">
             </div>
           </div>
       </div>
@@ -336,6 +371,12 @@
         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
       </div>   
       </form>
+      {* {php}
+
+         $editarProducto = new ControladorProductos();
+        $editarProducto->ctrEditarProducto(); 
+
+      {/php} *}
     </div>
   </div>
 </div>
