@@ -105,7 +105,7 @@ class C_principal extends SmartyBC
                 case 'clientes':
                     $plantilla->display('modulos/header.tpl');
                     $plantilla->display('modulos/menu.tpl');
-                    $plantilla->display('modulos/dashboard.tpl');
+                    $plantilla->display('modulos/clientes.tpl');
                     $plantilla->display('modulos/footer.tpl');
                     $plantilla->display('modulos/piepagina.tpl');
                     break;
@@ -113,7 +113,7 @@ class C_principal extends SmartyBC
                 case 'crear-ventas':
                     $plantilla->display('modulos/header.tpl');
                     $plantilla->display('modulos/menu.tpl');
-                    $plantilla->display('modulos/clientes.tpl');
+                    $plantilla->display('modulos/crear-ventas.tpl');
                     $plantilla->display('modulos/footer.tpl');
                     $plantilla->display('modulos/piepagina.tpl');
                     break;
