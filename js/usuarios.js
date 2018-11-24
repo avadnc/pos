@@ -157,7 +157,7 @@ $(document).on('click', '.btnEliminarUsuario', function() {
                 window.location = 'index.php?ruta=usuarios&idUsuario=' + idUsuario + '&usuario=' + usuario + '&fotoUsuario=' + fotoUsuario;
 
             }
-        })
+        });
     }
 });
 // =============================================================================

@@ -332,3 +332,28 @@ $(document).on('ifChecked', '.porcentaje', function() {
     $('#editarPrecioVenta').prop('readonly', true);
 
 });
+
+$(document).on('click', '.btnEliminarProducto', function() {
+
+    var idProducto = $(this).attr('idProducto');
+    var codigo = $(this).attr('codigo');
+    var imagen = $(this).attr('imagen');
+
+    swal({
+        title: 'ATENCION',
+        text: '¿Estas segurod de querer eliminar el producto?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Eliminar',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar'
+
+    }).then((result) => {
+        if (result.value) {
+
+            window.location = 'index.php?ruta=productos&idProducto=' + idProducto + '&codigo=' + codigo + '&imagen=' + imagen;
+
+        }
+    });
+});

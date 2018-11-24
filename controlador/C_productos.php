@@ -278,4 +278,46 @@ class ControladorProductos
 
         }
     }
+
+    // =========================================================================
+    // Borrar Producto
+    // =========================================================================
+    public static function ctrEliminarProducto()
+    {
+       
+        if(isset($_GET['idProducto'])){
+
+            $tabla = 'productos';
+            $datos = $_GET['idProducto'];
+
+            if($_GET['imagen'] != '' && $_GET['imagen'] != 'img/productos/producto.png' ){
+
+                unlink($_GET['imagen']);
+                rmdir('img/productos/'.$_GET['codigo']);
+            }
+
+            $respuesta = ModeloProductos::mdlEliminarProducto($tabla,$datos);
+           
+            if ($respuesta == 'ok') {
+
+                echo '
+                    <script>
+                    swal({
+                        type: "success",
+                        title: "El Producto ha sido eliminado correctamente.",
+                        showConfirmButton: true,
+                        confirmButtonText: "Cerrar",
+                        closeOnConfirm: false
+                    }).then((result)=>{
+                        
+                        if(result.value){
+                            window.location = "productos";
+                        }
+
+                    });
+                    </script>
+                    ';
+            }
+        }
+    }
 }
