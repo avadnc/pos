@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-5, created on 2018-11-24 00:50:59
+/* Smarty version 3.1.34-dev-5, created on 2018-11-23 23:35:36
   from '/var/www/html/pos/smarty/templates/modulos/productos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-5',
-  'unifunc' => 'content_5bf8a073b4cb53_06528941',
+  'unifunc' => 'content_5bf8e3286f3f81_51382724',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ef572c52614d158f511bffaaa87485d19aa9705f' => 
     array (
       0 => '/var/www/html/pos/smarty/templates/modulos/productos.tpl',
-      1 => 1543020655,
+      1 => 1543037666,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bf8a073b4cb53_06528941 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bf8e3286f3f81_51382724 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -199,7 +199,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                         <span class="input-group-addon">
                             <i class="fa fa-dollar"></i>
                         </span>
-                        <input type="text" class="form-control input-lg" name="nuevaMoneda" placeholder="Moneda" value="MX" required>
+                        <input type="text" class="form-control input-lg" name="nuevaMoneda" placeholder="Moneda" value="MXN" required>
                     </div>
                 </div>
               </div>

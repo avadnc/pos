@@ -25,14 +25,23 @@ class ControladorProductos
         if (isset($_POST['nuevaDescripcion'])) {
 
 
-            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST['nuevaDescripcion']) &&
-                preg_match('/^[0-9]+$/', $_POST['nuevoStock']) &&
+            // if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST['nuevaDescripcion']) &&
+            if (preg_match('/^[0-9]+$/', $_POST['nuevoStock']) &&
                 preg_match('/^[0-9-.,]+$/', $_POST['nuevoPrecioCompra']) &&
-                preg_match('/^[0-9-.,]+$/', $_POST['nuevoPrecioVenta']) &&
-                preg_match('/^[a-zA-Z0-9]+$/', $_POST['nuevoCodigo'])) {
+                preg_match('/^[0-9-.,]+$/', $_POST['nuevoPrecioVenta'])) {
+                // preg_match('/^[a-zA-Z0-9-_\/\"]+$/', $_POST['nuevoCodigo'])
 
                 $ruta = '';
 
+                if ($_POST['nuevaMoneda'] == null || $_POST['nuevaMoneda'] == '') {
+
+                    $moneda = 'MXN';
+
+                } else {
+
+                    $moneda = $_POST['nuevaMoneda'];
+
+                }
                     // =========================================================
                     // validar imagen
                     // =========================================================
@@ -89,7 +98,7 @@ class ControladorProductos
                     'imagen' => $ruta,
                     'claveprodserv' => $_POST['nuevaClaveProdServ'],
                     'umed' => $_POST['nuevaUmed'],
-                    'moneda' => $_POST['nuevaMoneda']
+                    'moneda' => $moneda
                 );
 
                 var_dump($datos);
@@ -284,20 +293,20 @@ class ControladorProductos
     // =========================================================================
     public static function ctrEliminarProducto()
     {
-       
-        if(isset($_GET['idProducto'])){
+
+        if (isset($_GET['idProducto'])) {
 
             $tabla = 'productos';
             $datos = $_GET['idProducto'];
 
-            if($_GET['imagen'] != '' && $_GET['imagen'] != 'img/productos/producto.png' ){
+            if ($_GET['imagen'] != '' && $_GET['imagen'] != 'img/productos/producto.png') {
 
                 unlink($_GET['imagen']);
-                rmdir('img/productos/'.$_GET['codigo']);
+                rmdir('img/productos/' . $_GET['codigo']);
             }
 
-            $respuesta = ModeloProductos::mdlEliminarProducto($tabla,$datos);
-           
+            $respuesta = ModeloProductos::mdlEliminarProducto($tabla, $datos);
+
             if ($respuesta == 'ok') {
 
                 echo '

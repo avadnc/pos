@@ -187,7 +187,7 @@
                         <span class="input-group-addon">
                             <i class="fa fa-dollar"></i>
                         </span>
-                        <input type="text" class="form-control input-lg" name="nuevaMoneda" placeholder="Moneda" value="MX" required>
+                        <input type="text" class="form-control input-lg" name="nuevaMoneda" placeholder="Moneda" value="MXN" required>
                     </div>
                 </div>
               </div>
