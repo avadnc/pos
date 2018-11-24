@@ -295,7 +295,7 @@
                         <span class="input-group-addon">
                             <i class="fa fa-shopping-basket"></i>
                         </span>
-                        <input type="number" min="0" step="any" class="form-control input-lg" id="editarPrecioVenta" name="editarPrecioVenta">
+                        <input type="number" min="0" step="any" class="form-control input-lg" id="editarPrecioVenta" name="editarPrecioVenta" readonly>
                     </div>
               
                 <br>
@@ -371,12 +371,12 @@
         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
       </div>   
       </form>
-      {* {php}
+      {php}
 
-         $editarProducto = new ControladorProductos();
-        $editarProducto->ctrEditarProducto(); 
+            $editarProducto = new ControladorProductos();
+            $editarProducto->ctrEditarProducto(); 
 
-      {/php} *}
+      {/php}
     </div>
   </div>
 </div>

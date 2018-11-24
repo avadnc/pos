@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-5, created on 2018-11-23 18:03:20
+/* Smarty version 3.1.34-dev-5, created on 2018-11-24 00:17:58
   from '/var/www/html/pos/smarty/templates/modulos/productos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-5',
-  'unifunc' => 'content_5bf840e8f1b040_53516469',
+  'unifunc' => 'content_5bf898b6b94b79_53568127',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ef572c52614d158f511bffaaa87485d19aa9705f' => 
     array (
       0 => '/var/www/html/pos/smarty/templates/modulos/productos.tpl',
-      1 => 1542996199,
+      1 => 1543016452,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bf840e8f1b040_53516469 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bf898b6b94b79_53568127 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -290,7 +290,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                         <span class="input-group-addon">
                             <i class="fa fa-shopping-basket"></i>
                         </span>
-                        <input type="number" min="0" step="any" class="form-control input-lg" id="editarPrecioVenta" name="editarPrecioVenta">
+                        <input type="number" min="0" step="any" class="form-control input-lg" id="editarPrecioVenta" name="editarPrecioVenta" readonly>
                     </div>
               
                 <br>
@@ -354,7 +354,13 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
       </div>   
       </form>
-          </div>
+      <?php 
+
+            $editarProducto = new ControladorProductos();
+            $editarProducto->ctrEditarProducto(); 
+
+      ?>
+    </div>
   </div>
 </div><?php }
 }
